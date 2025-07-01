@@ -16,6 +16,9 @@ public class UserLogbookPage_POM {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(xpath= "//button[text()='Logbook']")
+    private WebElement logBookButton;
+
     //Blood Glucose Tracker section
     @FindBy(xpath= "//h2[@class='text-2xl font-semibold mb-6']")
     private WebElement bloodGlucoseTracker;

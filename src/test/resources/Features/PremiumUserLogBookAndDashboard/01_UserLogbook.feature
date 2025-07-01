@@ -1,4 +1,4 @@
-Feature: Physical Activity Validation and Medical Dosage Validation
+Feature: Physical Activity Validation
   Background: User is in home page after logged in
 
   Scenario: Verify the presence of Physical activity section

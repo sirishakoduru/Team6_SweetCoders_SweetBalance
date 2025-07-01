@@ -88,6 +88,11 @@ Feature: Blood Glucose Tracker Validation and Meal and Nutrition Validation and 
     When User navigate to logbook page
     Then User should see the section "7-Day Aggregate Nutrition"
 
+  Scenario: Verify the presence of Daily Nutrition breakdown in Meal & Nutrition section
+    Given User is in Home page
+    When User navigate to logbook page
+    Then User should see the section "Daily Nutrition breakdown"
+
   Scenario: Verify text color of Carbs in 7-day aggregate nutrition section
     Given User is in Home page
     When User navigate to logbook page
@@ -217,12 +222,12 @@ Feature: Blood Glucose Tracker Validation and Meal and Nutrition Validation and 
     Then User should see yellow colour text
 
   Scenario: verify green colour bar is displayed for doses taken on one week schedule
-    Given User should see yellow colour text
+    Given User has taken the scheduled dose for a day
     When User navigate to logbook page
     Then User should see green colour bar for that day
 
   Scenario: Verify red colour bard is displayed for doses missed on one week schedule
-    Given User should see yellow colour text
+    Given User has taken the scheduled dose for a day
     When User navigate to logbook page
     Then User should see red colour bar for that day
 

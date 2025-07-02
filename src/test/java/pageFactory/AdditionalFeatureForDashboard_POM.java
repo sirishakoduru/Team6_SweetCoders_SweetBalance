@@ -120,7 +120,7 @@ public class AdditionalFeatureForDashboard_POM {
     private WebElement xButton;
 
     //Action methods
-    public boolean isKingSymbolDisplayed() {
+    public boolean verifyKingSymbolDisplayed() {
         return kingSymbolPremiumActivated.isDisplayed();
     }
 
@@ -128,7 +128,7 @@ public class AdditionalFeatureForDashboard_POM {
         return kingSymbolPremiumActivated.getText();
     }
 
-    public boolean isManagePremiumButtonVisible() {
+    public boolean verifyManagePremiumButtonVisible() {
         return managePremiumButton.isDisplayed();
     }
 
@@ -136,7 +136,7 @@ public class AdditionalFeatureForDashboard_POM {
         managePremiumButton.click();
     }
 
-    public boolean isDialogBoxVisible() {
+    public boolean verifyDialogBoxVisible() {
         return dialogBox.isDisplayed();
     }
 
@@ -149,23 +149,19 @@ public class AdditionalFeatureForDashboard_POM {
     }
 
     //Emotional Well being validations on Premium dashboard
-    public void scrollToMiddle() {
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight/2)");
-    }
-
-    public boolean isEmotionalWellBeingTitleVisible() {
+    public boolean verifyEmotionalWellBeingTitleVisible() {
         return emotionalWellBeing.isDisplayed();
     }
 
-    public boolean isQuestionDisplayed() {
+    public boolean verifyQuestionIsDisplayed() {
         return questionIsDisplayed.isDisplayed();
     }
 
-    public boolean areMoodEmojisDisplayed() {
+    public boolean verifyMoodEmojisDisplayed() {
         return moodEmojisDisplayed.isDisplayed();
     }
 
-    public boolean isNotesOnMoodLabelVisible() {
+    public boolean verifyNotesOnMoodLabelVisible() {
         return notesOnMoodText.isDisplayed();
     }
 
@@ -182,11 +178,11 @@ public class AdditionalFeatureForDashboard_POM {
         return inputFieldText.getAttribute("value");
     }
 
-    public boolean isEnergyLevelTextDisplayed() {
+    public boolean verifyEnergyLevelTextDisplayed() {
         return energyLevelTextWithValue.isDisplayed();
     }
 
-    public boolean isEnergyLevelSliderVisible() {
+    public boolean verifyEnergyLevelSliderVisible() {
         return energyLevelSlider.isDisplayed();
     }
 
@@ -195,7 +191,7 @@ public class AdditionalFeatureForDashboard_POM {
         actions.clickAndHold(energyLevelSlider).moveByOffset(xOffset, 0).release().perform();
     }
 
-    public boolean isLogEmotionalStateButtonVisible() {
+    public boolean verifyLogEmotionalStateButtonVisible() {
         return logEmotionalStateButton.isDisplayed();
     }
 
@@ -250,15 +246,15 @@ public class AdditionalFeatureForDashboard_POM {
 
 
     // Smart Insights Validation on Premium dashboard
-    public boolean isSmartInsightsTitleVisible() {
+    public boolean verifySmartInsightsTitleVisible() {
         return smartInsightsSection.isDisplayed();
     }
 
-    public boolean isLast7DaysLabelVisible() {
+    public boolean verifyLast7DaysLabelVisible() {
         return smartInsightsSectionLabel.isDisplayed();
     }
 
-    public boolean areSmartInsightsTitlesPresent() {
+    public boolean verifySmartInsightsTitlesPresent() {
         String sectionText = smartInsightsSectionTitles.getText();
         return sectionText.contains("Target Achievement") &&
                 sectionText.contains("Pattern detected") &&
@@ -282,7 +278,7 @@ public class AdditionalFeatureForDashboard_POM {
         return messageDisplayInDialogBox.getText().trim();
     }
 
-    public boolean isLossFeatureSectionDisplayed() {
+    public boolean verifyLossFeatureSectionDisplayed() {
         return featuresSectionIsDisplayed.isDisplayed();
     }
 
@@ -290,7 +286,7 @@ public class AdditionalFeatureForDashboard_POM {
         return featuresSectionIsDisplayed.getText().trim();
     }
 
-    public boolean areActionButtonsVisible() {
+    public boolean verifyActionButtonsVisible() {
         return keepPremiumButton.isDisplayed() && cancelPremiumButton.isDisplayed();
     }
 
@@ -338,7 +334,7 @@ public class AdditionalFeatureForDashboard_POM {
         xButton.click();
     }
 
-    public boolean isDialogClosed() {
+    public boolean verifyDialogClosed() {
         try {
             return !messageDisplayInDialogBox.isDisplayed();
         } catch (NoSuchElementException | StaleElementReferenceException e) {

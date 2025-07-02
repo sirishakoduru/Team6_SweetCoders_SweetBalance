@@ -161,7 +161,7 @@ public class UserLogbookPage_POM {
         return fastingElementColor;
     }
 
-    public boolean isFastingRangeDisplayed() {
+    public boolean verifyFastingRangeDisplayed() {
         return fastingGlucoseRange.isDisplayed();
     }
 
@@ -170,7 +170,7 @@ public class UserLogbookPage_POM {
         LoggerLoad.info("The color of the pre-meal label is: " + preMealElementColor);
         return preMealElementColor;
     }
-    public boolean isPreMealRangeDisplayed() {
+    public boolean verifyPreMealRangeDisplayed() {
         return preMealGlucoseRange.isDisplayed();
     }
 
@@ -179,7 +179,7 @@ public class UserLogbookPage_POM {
         LoggerLoad.info("The color of the post-meal label is: " + postMealElementColor);
         return postMealElementColor;
     }
-    public boolean isPostMealRangeDisplayed() {
+    public boolean verifyPostMealRangeDisplayed() {
         return postMealGlucoseRange.isDisplayed();
     }
 
@@ -188,7 +188,7 @@ public class UserLogbookPage_POM {
         LoggerLoad.info("The color of the bed time label is: " + bedtimeElementColor);
         return bedtimeElementColor;
     }
-    public boolean isBedtimeRangeDisplayed() {
+    public boolean verifyBedtimeRangeDisplayed() {
         return bedTimeGlucoseRange.isDisplayed();
     }
 
@@ -200,17 +200,17 @@ public class UserLogbookPage_POM {
         return days;
     }
 
-    public boolean isYaxisStartAt70InGlucoseChart() {
+    public boolean verifyYaxisStartAt70InGlucoseChart() {
         return bloodGlucoseYaxisStart70.isDisplayed();
     }
 
-    public boolean isYaxisEndAt180InGlucoseChart() {
+    public boolean verifyYaxisEndAt180InGlucoseChart() {
         return bloodGlucoseYaxisEnds180.isDisplayed();
     }
 
 
     //Meal & Nutrition section
-    public boolean isMealNutritionSectionDisplayed() {
+    public boolean verifyMealNutritionSectionDisplayed() {
         return mealNutritionSection.isDisplayed();
     }
 
@@ -218,15 +218,15 @@ public class UserLogbookPage_POM {
         return mealNutritionSection.getText().trim();
     }
 
-    public boolean isMealNutritionIconDisplayed() {
+    public boolean verifyMealNutritionIconDisplayed() {
         return mealNutritionIcon.isDisplayed();
     }
 
-    public boolean isSevenDayAggregateNutritionTitleDisplayed() {
+    public boolean verifySevenDayAggregateNutritionTitleDisplayed() {
         return sevenDayAggregateNutritionTitle.isDisplayed();
     }
 
-    public boolean isDailyNutritionBreakdownDisplayed() {
+    public boolean verifyDailyNutritionBreakdownDisplayed() {
         return dailyNutritionBreakdown.isDisplayed();
     }
 
@@ -262,7 +262,7 @@ public class UserLogbookPage_POM {
         return chartContent.isEmpty();
     }
 
-    public boolean isDailyNutritionPieChartDisplayed() {
+    public boolean verifyDailyNutritionPieChartDisplayed() {
         return dailyNutritionPieChart.isDisplayed();
     }
 
@@ -280,7 +280,7 @@ public class UserLogbookPage_POM {
 
 
     //Medical Dosage section
-    public boolean isMedicalDosageSectionDisplayed() {
+    public boolean verifyMedicalDosageSectionDisplayed() {
         return medicalDosageSection.isDisplayed();
     }
 
@@ -288,7 +288,7 @@ public class UserLogbookPage_POM {
         return medicalDosageSection.getText().trim();
     }
 
-    public boolean isMedicalDosageIconDisplayed() {
+    public boolean verifyMedicalDosageIconDisplayed() {
         return medicalDosageIcon.isDisplayed();
     }
 
@@ -296,7 +296,7 @@ public class UserLogbookPage_POM {
         return numberOfDosageTextInYaxis.getText().trim();
     }
 
-    public boolean isMedicalDosageChartDisplayed() {
+    public boolean verifyMedicalDosageChartDisplayed() {
         return medicalDosageBarChart.isDisplayed();
     }
 
@@ -332,7 +332,7 @@ public class UserLogbookPage_POM {
 
 
     //Log review section
-    public boolean isLogReviewTitleDisplayed() {
+    public boolean verifyLogReviewTitleDisplayed() {
         return logReviewTitle.isDisplayed();
     }
 
@@ -404,38 +404,41 @@ public class UserLogbookPage_POM {
         }
         return true;
     }
-    public boolean isBloodGlucoseColumnEmpty() {
+    public boolean verifyBloodGlucoseColumnEmpty() {
         return verifyLogReviewColumnValuesAreHyphen(bloodGlucoseColumn);
     }
-    public boolean isNutritionColumnEmpty() {
+
+    public boolean verifyNutritionColumnEmpty() {
         return verifyLogReviewColumnValuesAreHyphen(nutritionColumn);
     }
-    public boolean isActivityColumnEmpty() {
+
+    public boolean verifyActivityColumnEmpty() {
         return verifyLogReviewColumnValuesAreHyphen(activityColumn);
     }
-    public boolean isMedicationColumnEmpty() {
+
+    public boolean verifyMedicationColumnEmpty() {
         return verifyLogReviewColumnValuesAreHyphen(medicationColumn);
     }
 
-    public boolean isAnyBloodGlucoseValueLogged() {
+    public boolean verifyAnyBloodGlucoseValueLogged() {
         return bloodGlucoseColumn.stream()
                 .anyMatch(e -> !e.getText().trim().equals("-"));
     }
-    public boolean isAnyNutrientValueLogged() {
+    public boolean verifyAnyNutrientValueLogged() {
         return nutritionColumn.stream()
                 .anyMatch(e -> !e.getText().trim().equals("-"));
     }
-    public boolean isAnyPhysicalActivityValueLogged() {
+    public boolean verifyAnyPhysicalActivityValueLogged() {
         return activityColumn.stream()
                 .anyMatch(e -> !e.getText().trim().equals("-"));
     }
-    public boolean isAnyMedicationValueLogged() {
+    public boolean verifyAnyMedicationValueLogged() {
         return medicationColumn.stream()
                 .anyMatch(e -> !e.getText().trim().equals("-"));
     }
 
     //Physical Activity Validation
-    public boolean isPhysicalActivitySectionDisplayed() {
+    public boolean verifyPhysicalActivitySectionDisplayed() {
         return physicalActivitySection.isDisplayed();
     }
 
@@ -443,7 +446,7 @@ public class UserLogbookPage_POM {
         return physicalActivitySection.getText();
     }
 
-    public boolean isPhysicalActivityIconDisplayed() {
+    public boolean verifyPhysicalActivityIconDisplayed() {
         return physicalActivityIcon.isDisplayed();
     }
 
@@ -493,7 +496,7 @@ public class UserLogbookPage_POM {
         return dailyAverageValue.getText();
     }
 
-    public boolean isPeakDayValueDisplayed() {
+    public boolean verifyPeakDayValueDisplayed() {
         try {
             return peakDayValue.isDisplayed();
         } catch (NoSuchElementException e) {
@@ -501,7 +504,7 @@ public class UserLogbookPage_POM {
         }
     }
 
-    public boolean areActivityBarsDisplayedForLoggedDaysOnly() {
+    public boolean verifyActivityBarsDisplayedForLoggedDaysOnly() {
         int barCount = physicalActivityBarChart.size();
         LoggerLoad.info("Number of activity bars displayed: " + barCount);
         return barCount > 0;

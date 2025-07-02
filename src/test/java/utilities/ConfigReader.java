@@ -42,18 +42,37 @@ public class ConfigReader {
          else
              throw new RuntimeException("URL not specified in the Config.properties file");
     }
-
-	// UserName
-    public static String userName()
+	
+	public static String loginUrl()
     {    	
-    	 String loginUserName=prop.getProperty("username");
-    	 if (loginUserName != null)
-		    return loginUserName;
+         String loginUrl=prop.getProperty("loginURL");
+         if (loginUrl != null)
+            return loginUrl;
+         else
+             throw new RuntimeException("URL not specified in the Config.properties file");
+    }
+
+	// Email
+    public static String loginEmail()
+    {    	
+    	 String LoginEmail = prop.getProperty("email");
+    	 if (LoginEmail != null)
+		    return LoginEmail;
     	 else
-    		 throw new RuntimeException("Username not specified in the Config.properties file");
+    		 throw new RuntimeException("Email not specified in the Config.properties file");
+    }
+    
+	// Invalid Email
+    public static String invalidLoginEmail()
+    {    	
+    	 String invalidEmail = prop.getProperty("invalidEmail");
+    	 if (invalidEmail != null)
+		    return invalidEmail;
+    	 else
+    		 throw new RuntimeException("Invalid Email not specified in the Config.properties file");
     }
     // Password
-    public static String passWord()
+    public static String password()
     {    	
     	 String loginPassword=prop.getProperty("password");
     	 if (loginPassword != null)
@@ -61,46 +80,70 @@ public class ConfigReader {
     	 else
     		 throw new RuntimeException("Password not specified in the Config.properties file");
     }
-
-    public static String invalidURL()
+    
+    public static String homeUrl()
     {    	
-         String invalidURL=prop.getProperty("invalidURL");
-         if (invalidURL != null)
-            return invalidURL;
+         String homeUrl=prop.getProperty("homeURL");
+         if (homeUrl != null)
+            return homeUrl;
          else
              throw new RuntimeException("URL not specified in the Config.properties file");
     }
-    //Read program name from Config file
-    public static String ProgramName() {
-    	String ProgName=prop.getProperty("ProgramName");
-    	if (ProgName != null)
-            return ProgName;
-        else
-            throw new RuntimeException("Program name not specified in the Config.properties file");
+    
+    public static String newEmail()
+    {    	
+         String newEmail=prop.getProperty("newEmail");
+         if (newEmail != null)
+            return newEmail;
+         else
+             throw new RuntimeException("new email not specified in the Config.properties file");
     }
-    //Read BatchNumber
-    public static String BatchNum() {
-    	String Number=prop.getProperty("BatchNumber");
-    	if (Number != null)
-            return Number;
-        else
-            throw new RuntimeException("Batch number not specified in the Config.properties file");
+    
+    // Fullname
+    public static String OnboardingFullname()
+    {    	
+    	 String OnboardingFullname=prop.getProperty("OnboardingFullname");
+    	 if (OnboardingFullname != null)
+		    return OnboardingFullname;
+    	 else
+    		 throw new RuntimeException("Onboarding fullname not specified in the Config.properties file");
     }
-    //Read BatchDescription
-    public static String BatchDescription() {
-    	String Desc=prop.getProperty("BatchDescription");
-    	if (Desc != null)
-            return Desc;
-        else
-            throw new RuntimeException("BatchDescription not specified in the Config.properties file");
+    
+    // NewUsername
+    public static String OnboardingUsername()
+    {    	
+    	 String OnboardingUsername=prop.getProperty("OnboardingUsername");
+    	 if (OnboardingUsername != null)
+		    return OnboardingUsername;
+    	 else
+    		 throw new RuntimeException("Onboarding Username not specified in the Config.properties file");
     }
-    //Read No_Of_Classes
-    public static String No_Of_Classes() {
-    	String No_Of_Classes=prop.getProperty("No_Of_Classes");
-    	if (No_Of_Classes != null)
-            return No_Of_Classes;
-        else
-            throw new RuntimeException("No_Of_Classes not specified in the Config.properties file");
+    
+    // NewPassword
+    public static String OnboardingPassword()
+    {    	
+    	 String OnboardingPassword=prop.getProperty("OnboardingPassword");
+    	 if (OnboardingPassword != null)
+		    return OnboardingPassword;
+    	 else
+    		 throw new RuntimeException("Onboarding Password not specified in the Config.properties file");
     }
+
+	public static String uploadBloodReportURL() {
+		String bloodReportUrl=prop.getProperty("uploadBloodReportURL");
+   	 if (bloodReportUrl != null)
+		    return bloodReportUrl;
+   	 else
+   		 throw new RuntimeException("New Password not specified in the Config.properties file");
+	}
+	
+	public static String onboardingURL() {
+		String onboardingURL=prop.getProperty("onboardingURL");
+   	 if (onboardingURL != null)
+		    return onboardingURL;
+   	 else
+   		 throw new RuntimeException("New Password not specified in the Config.properties file");
+	}
+
 	
 }

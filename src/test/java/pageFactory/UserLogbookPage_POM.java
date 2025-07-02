@@ -32,19 +32,19 @@ public class UserLogbookPage_POM {
     private WebElement bloodGlucoseTracker;
     @FindBy(xpath= "//div[text()='Fasting']")
     private WebElement fastingColor;
-    @FindBy(xpath= "//div[text()='70-100 mg/dL']")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]']")
     private WebElement fastingGlucoseRange;
     @FindBy(xpath= "//div[text()='Pre-Meal']")
     private WebElement preMealColor;
-    @FindBy(xpath= "//div[text()='70-130 mg/dL']")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[2]")
     private WebElement preMealGlucoseRange;
     @FindBy(xpath= "//div[text()='Post-Meal']")
     private WebElement postMealColor;
-    @FindBy(xpath= "//div[text()='<180 mg/dL']")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[2]")
     private WebElement postMealGlucoseRange;
     @FindBy(xpath= "//div[text()='Bedtime']")
     private WebElement bedTimeColor;
-    @FindBy(xpath= "//div[text()='100-140 mg/dL']")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[4]/div[2]")
     private WebElement bedTimeGlucoseRange;
     @FindBy(xpath= "")
     private List<WebElement> daysInXaxisInGlucoseTracker;
@@ -74,8 +74,6 @@ public class UserLogbookPage_POM {
     private WebElement dailyNutritionEmptyBarChart;
     @FindBy(xpath= "//body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[1]/*[name()='svg']/*[name()='g']/*[name()='g']")
     private WebElement dailyNutritionPieChart;
-
-
     @FindBy(xpath= "//body//div//div[2]//div[2]//div[3]//div[1]//div[2]")
     private WebElement carbsCardValue;
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[3]/div[2]/div[2]")
@@ -92,11 +90,11 @@ public class UserLogbookPage_POM {
     private WebElement numberOfDosageTextInYaxis;
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[3]/div[2]/div[2]/div[1]")
     private WebElement medicalDosageBarChart;
-    @FindBy(xpath= "//div[@class='text-violet-600'][normalize-space()='0 doses']")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[3]/div[2]/div[3]/div[1]/div[2]")
     private WebElement dosesInTotalScheduledDisplay;
-    @FindBy(xpath= "//div[@class='text-emerald-600'][normalize-space()='0 doses']")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[3]/div[2]/div[3]/div[2]/div[2]")
     private WebElement dosesInDoseTakenDisplay;
-    @FindBy(xpath= "//div[@class='text-amber-600'][normalize-space()='0 doses']")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[3]/div[2]/div[3]/div[3]/div[2]")
     private WebElement dosesInDosageMissedDisplay;
     @FindBy(xpath= "//div[text() = 'Total Scheduled']")
     private WebElement totalScheduledText;
@@ -142,11 +140,11 @@ public class UserLogbookPage_POM {
     private WebElement physicalActivityEmptyBarChart;
     @FindBy(xpath= "//body[1]/div[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/*[name()='svg']/*[name()='g']/*[name()='g']/*[name()='g']/*[name()='g']")
     private List<WebElement> physicalActivityBarChart;
-    @FindBy(xpath= "//div[@class='text-violet-600'][normalize-space()='0 cal']")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[3]/div[1]/div[2]/div[2]/div[1]/div[2]")
     private WebElement totalCaloriesValue;
-    @FindBy(xpath= "//div[@class='text-amber-600'][normalize-space()='0 cal']")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[3]/div[1]/div[2]/div[2]/div[2]/div[2]")
     private WebElement dailyAverageValue;
-    @FindBy(xpath= "")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[3]/div[1]/div[2]/div[2]/div[3]/div[2]")
     private WebElement peakDayValue;
 
     //Action methods

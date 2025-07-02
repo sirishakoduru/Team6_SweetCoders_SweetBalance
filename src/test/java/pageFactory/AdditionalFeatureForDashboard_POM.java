@@ -295,19 +295,27 @@ public class AdditionalFeatureForDashboard_POM {
     }
 
     public String getKeepPremiumButtonBackgroundColor() {
-        return keepPremiumButton.getCssValue("background-color");
+        String keePremiumBGColor = keepPremiumButton.getCssValue("background-color");
+        LoggerLoad.info("Keep Premium button background color: " + keePremiumBGColor);
+        return keePremiumBGColor;
     }
 
     public String getKeepPremiumButtonTextColor() {
-        return keepPremiumButton.getCssValue("color");
+        String kPTextColor = keepPremiumButton.getCssValue("color");
+        LoggerLoad.info("Keep Premium button text color: " + kPTextColor);
+        return kPTextColor;
     }
 
     public String getCancelPremiumButtonBackgroundColor() {
-        return cancelPremiumButton.getCssValue("background-color");
+        String cancelPremiumBGColor = cancelPremiumButton.getCssValue("background-color");
+        LoggerLoad.info("Cancel Premium button background color: " + cancelPremiumBGColor);
+        return cancelPremiumBGColor;
     }
 
     public String getCancelPremiumButtonTextColor() {
-        return cancelPremiumButton.getCssValue("color");
+        String cPTextColor = cancelPremiumButton.getCssValue("color");
+        LoggerLoad.info("Cancel Premium button text color: " + cPTextColor);
+        return cPTextColor;
     }
 
     public void clickKeepPremiumButton() {

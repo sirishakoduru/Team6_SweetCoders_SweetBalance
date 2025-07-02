@@ -55,8 +55,6 @@ public class CommonMethods {
 			actions.scrollToElement(locator).perform();
 		} catch (Exception e) {
 			LoggerLoad.info("No element found for locator : " +locator);
-		}
-		
+		}		
 	}
-
 }

@@ -206,20 +206,15 @@ public class CommonHomePage_Step {
 		LoggerLoad.info("Validate label: " +actualLabel);
 		assertEquals(actualLabel.trim(), expectedLabel.trim(), "\"" +expectedLabel+ "\" Label is not visible");
 	}
-	@Given("User is logged into the app")
-	public void user_is_logged_into_the_app() {
-		commonHomePage.clickLoginBttn();
-		commonHomePage.enterEmailInTextBox(ConfigReader.getProperty("email"));
-		commonHomePage.clickContinueWithEmail();
-		commonHomePage.enterPasswordInTextBox(ConfigReader.getProperty("password"));
-		commonHomePage.clickSignInbttn();	    
-	}
 
 	@Given("User is in home page")
-	public void user_is_in_home_page() throws InterruptedException {
-		Thread.sleep(1000);
-		String actualPageURL = commonHomePage.getCurrentUrl();
-		assertEquals(actualPageURL, "https://sweet-balance-test-env-3-numpyninjadiabe.replit.app/", "User is not in home page");	    	    
+	public void user_is_in_home_page() {
+		//Thread.sleep(1000);
+		commonHomePage.clickLoginBttn();
+		commonHomePage.enterEmailInTextBox(ConfigReader.getProperty("freeUSerEmail"));
+		commonHomePage.clickContinueWithEmail();
+		commonHomePage.enterPasswordInTextBox(ConfigReader.getProperty("freeUserPassword"));
+		commonHomePage.clickSignInbttn();	      	    
 	}
 
 	@When("User clicks on the {string} section")

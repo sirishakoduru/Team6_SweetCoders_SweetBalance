@@ -343,8 +343,3 @@ public class Login_POM {
 	        System.out.println("❌ Failed to enter password: " + e.getMessage());
 	    }
 	}
-	
-	
-
-	
-}

@@ -7,13 +7,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import utilities.ConfigReader;
-
 public class DriverFactory {
 	
 public static WebDriver driver;
 	
-	public static ThreadLocal<WebDriver>tldriver = new ThreadLocal<>();
+	public static ThreadLocal<WebDriver> tldriver = new ThreadLocal<>();
 	
 	public static WebDriver initializeBrowser(String browser) {
 		System.out.println("browser value is: " +browser);

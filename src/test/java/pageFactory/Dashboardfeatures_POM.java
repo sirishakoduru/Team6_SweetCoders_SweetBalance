@@ -71,9 +71,9 @@ public class Dashboardfeatures_POM {
  // Login Method with explicit waits
     public void login() {
         driver.get(auth_page);
-        wait.until(ExpectedConditions.visibilityOf(email)).sendKeys("Team6SweetBalance@gmail.com");
+        wait.until(ExpectedConditions.visibilityOf(email)).sendKeys("manasa.venna@yahoo.com");
         continueemail.click();
-        wait.until(ExpectedConditions.visibilityOf(passwordField)).sendKeys("Team6SweetBalance");
+        wait.until(ExpectedConditions.visibilityOf(passwordField)).sendKeys("number@123");
         signin.click();
         waitForPageToLoad();
     }

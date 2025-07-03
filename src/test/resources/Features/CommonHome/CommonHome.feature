@@ -41,11 +41,11 @@ Feature: Validation for home page - Registered user
   Scenario: Verify the time for last update in home page
     When User clicks sign in after entering password
     Then User should see timestamp displayed next to the Last updated label
-    
+################### Need fix ##########################    
   Scenario: Verify the time format for last update
     When User clicks sign in after entering password
     Then User should see last updated timestamp in 12-hour format as hh:mm:ss or relative format like "3 min ago" or "2 hr ago"
-    
+#########################################################    
   Scenario: Verify 12-hour clock indicator is visible
     When User clicks sign in after entering password
     Then User should see 12-hour clock indicator with AM/PM

@@ -1,6 +1,6 @@
 Feature: Validation on meal section
   Background: 
-    Given User is logged into the app
+#    Given User is logged into the app
     
   Scenario: Verify each meal section is clickable to show details
     Given User is in home page

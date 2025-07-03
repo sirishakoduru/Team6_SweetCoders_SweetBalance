@@ -18,21 +18,20 @@ import utilities.LoggerLoad;
 public class Hooks {
 	
 	public static WebDriver driver;
-	// DriverFactory df=new DriverFactory();
 
 	@Before
 	public void setup() throws Throwable {
-		DriverFactory.initializeBrowser(ConfigReader.getProperty("browser"));
-//		String browser = ConfigReader.getBrowserType();
-		//DriverFactory.initializeBrowser(browser);
+		LoggerLoad.info("Loading Config file");
+		ConfigReader.intializeProperties();
+		String browser = ConfigReader.getBrowserType();
+		
+		if(browser==null) {
+			LoggerLoad.info("Browser is null. Take browser from config property");
+			browser = ConfigReader.getProperty("browser");
+		}
+		DriverFactory.initializeBrowser(browser);
 
 		driver = DriverFactory.getDriver();
-
-//		driver.manage().deleteAllCookies();
-//		driver.navigate().refresh();
-//		driver.manage().window().maximize();
-//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
 		driver.get(ConfigReader.getProperty("baseURL"));
 	}
 
@@ -59,7 +58,6 @@ public class Hooks {
 		Thread.sleep(3000);
 		
 		DriverFactory.quitDriver();
-		//driver.quit();
 
 	}
 

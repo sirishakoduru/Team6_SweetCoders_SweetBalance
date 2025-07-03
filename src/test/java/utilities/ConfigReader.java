@@ -6,12 +6,18 @@ import java.util.Properties;
 public class ConfigReader {
 	
 	private static Properties prop = null;
-	private static String browserType = null;
+	private static ThreadLocal<String> browserType = new ThreadLocal<String>();
+	//private static String browserType = null;
 
 	public static void setBrowserType(String browser) {
-		browserType = browser;
+		browserType.set(browser);
+		//browserType = browser;
 	}
 
+	public static String getBrowserType() {
+		return browserType.get();
+		//return browserType;
+	}
 	public static String getProperty(String key) {
 
 		if (prop == null)

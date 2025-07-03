@@ -61,6 +61,14 @@ public class ConfigReader {
     	 else
     		 throw new RuntimeException("Email not specified in the Config.properties file");
     }
+
+	public static String userEmail() {
+		String LoginEmail = prop.getProperty("userEmail");
+		if (LoginEmail != null)
+			return LoginEmail;
+		else
+			throw new RuntimeException("Email not specified in the Config.properties file");
+	}
     
 	// Invalid Email
     public static String invalidLoginEmail()
@@ -80,6 +88,15 @@ public class ConfigReader {
     	 else
     		 throw new RuntimeException("Password not specified in the Config.properties file");
     }
+
+	public static String userPassword()
+	{
+		String loginPassword=prop.getProperty("userPassword");
+		if (loginPassword != null)
+			return loginPassword;
+		else
+			throw new RuntimeException("Password not specified in the Config.properties file");
+	}
     
     public static String homeUrl()
     {    	
@@ -144,6 +161,8 @@ public class ConfigReader {
    	 else
    		 throw new RuntimeException("New Password not specified in the Config.properties file");
 	}
+
+
 
 	
 }

@@ -1,6 +1,9 @@
 package utilities;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
+import java.util.Locale;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -55,6 +58,19 @@ public class CommonMethods {
 			action.scrollToElement(locator);
 		} catch (Exception e) {
 			LoggerLoad.info("No element found within for locator: " +locator);
+		}
+	}
+
+
+	// Utility method to validate date format
+	public boolean isDateInFormat(String dateStr, String format) {
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.ENGLISH);
+			sdf.setLenient(false);
+			Date date = sdf.parse(dateStr);
+			return date != null;
+		} catch (Exception e) {
+			return false;
 		}
 	}
 }

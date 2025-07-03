@@ -1,5 +1,7 @@
+@dashboard_1
 Feature: Dashboard page validation for Registered premium account user
   Background: User logged into the app
+    Given User is logged in
 
   Scenario: Verify display of  King symbol next to their name
     Given User is in Home page

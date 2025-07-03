@@ -1,5 +1,7 @@
+@dashboard_3
 Feature: Manage premium Dialog box Validation
   Background: User clicks manage premium in dashboard page after logging in
+    Given User is logged in
 
   Scenario: Verify the message displayed in dialog box
     Given User is in premium subscription dialog box

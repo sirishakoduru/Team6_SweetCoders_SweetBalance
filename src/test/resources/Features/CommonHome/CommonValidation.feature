@@ -36,12 +36,12 @@ Feature: Functional and non-functional test validation for home page
     Given User is in home page
     When User clicks dinner in meal section
     Then User should see indicator "PM" for dinner pre-meal
-    
+################## Need fix ########################    
   Scenario: Verify the time format in each pre-meal
     Given User is in home page
     When User clicks meal section
     Then User should see "hh:mm" based time in pre-meal (eg : 1:00)
-    
+#####################################################    
   Scenario: Verify the time in pre-breakfast
     Given User is in home page
     When User clicks breakfast in meal section

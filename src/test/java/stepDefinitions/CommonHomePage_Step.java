@@ -12,7 +12,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageFactory.CommonHomePage_POM;
-import utilities.CommonMethods;
 import utilities.ConfigReader;
 import utilities.LoggerLoad;
 

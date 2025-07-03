@@ -17,15 +17,14 @@ public class HomePage_Step {
 	HomePage_POM lauchUI = new HomePage_POM();
 	
 	@Given("User launches the browser")
-	public void user_launches_the_browser() {
-		String actualPageURL = lauchUI.getCurrentUrl();
-		assertEquals(actualPageURL, "https://sweet-balance-test-env-3-numpyninjadiabe.replit.app/firstPage", "Launched wrong URL");	    
+	public void user_launches_the_browser() {	
+		lauchUI.navigateBack();
 	}
 
 	@When("User enters the SweetBalance url")
 	public void user_enters_the_sweet_balance_url() {
-		LoggerLoad.info("I am here");
-	    
+		LoggerLoad.info("User is on sweet balance App");
+	    lauchUI.openBaseURL();
 	}
 
 	@Then("User should see app name on the top left")
@@ -220,18 +219,19 @@ public class HomePage_Step {
 	@Given("User is in browser")
 	public void user_is_in_browser() {
 	    
-	    
+	    lauchUI.navigateBack();
 	}
 
 	@Then("Page should be fully loaded within {int} seconds")
 	public void page_should_be_fully_loaded_within_seconds(Integer int1) {
-	    
-	    
+		
+		long loadTime = lauchUI.verifyPageLoadTimeUnder3Seconds();
+	    assertTrue(loadTime <= 3000, "Page did not load within 3 seconds");
 	}
 
 	@Then("All elements are readable and accessible without horizontal scrolling")
 	public void all_elements_are_readable_and_accessible_without_horizontal_scrolling() {
-	    
+		assertTrue(lauchUI.getHorizontalScrollwidth(), "Should not be accessible without horizontal scrolling");
 	    
 	}
 

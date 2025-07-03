@@ -3,6 +3,7 @@ package pageFactory;
 import java.util.Arrays;
 import java.util.List;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import driver.DriverFactory;
 import utilities.CommonMethods;
+import utilities.ConfigReader;
+import utilities.LoggerLoad;
 
 public class HomePage_POM {
 		
@@ -183,5 +186,43 @@ public class HomePage_POM {
 		public boolean isdiabetesPopUpDisplayed() {
 			CommonMethods.waitForElementVisibilityOf(diabetesPopUp);
 			return diabetesPopUp.isDisplayed();
+		}
+		public void navigateBack() {
+			driver.navigate().back();
+		}
+		public void openBaseURL() {
+			driver.get(ConfigReader.getProperty("baseURL"));
+		}
+		public long verifyPageLoadTimeUnder3Seconds() {
+		    JavascriptExecutor js = (JavascriptExecutor) driver;
+
+		    // Get navigation timings
+		    long navigationStart = (Long) js.executeScript("return window.performance.timing.navigationStart;");
+		    long loadEventEnd = (Long) js.executeScript("return window.performance.timing.loadEventEnd;");
+
+		    // Calculate load time
+		    long loadTime = loadEventEnd - navigationStart;
+		    System.out.println("Page Load Time (ms): " + loadTime);
+
+		    return loadTime;
+		}
+		public boolean getHorizontalScrollwidth() {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+
+			Long scrollWidth = (Long) js.executeScript("return document.documentElement.scrollWidth;");
+			Long clientWidth = (Long) js.executeScript("return document.documentElement.clientWidth;");
+
+			System.out.println("Scroll Width: " + scrollWidth);
+			System.out.println("Client Width: " + clientWidth);
+			
+			if(scrollWidth <= clientWidth) {
+				LoggerLoad.info("Horizontal scroll is not detected");
+				return true;
+			} else {
+				LoggerLoad.info("Horizontal scroll is detected");
+				return false;
+			}
+				
+				
 		}
 }

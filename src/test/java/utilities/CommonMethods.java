@@ -4,6 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -45,5 +46,15 @@ public class CommonMethods {
 		} catch (Exception e) {
 			LoggerLoad.info("No element found within timeout: " + DEFAULT_TIMEOUT + " seconds");
 		}
+	}
+	
+	public static void scrollToElement(WebElement locator) {
+		try {
+			WebDriver driver = DriverFactory.getDriver();
+			Actions actions = new Actions(driver);
+			actions.scrollToElement(locator).perform();
+		} catch (Exception e) {
+			LoggerLoad.info("No element found for locator : " +locator);
+		}		
 	}
 }

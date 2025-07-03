@@ -55,6 +55,7 @@ public class SubscriptionPage_POM {
 		return driver.getCurrentUrl();
 	}
 	public void clickdashboardBttn() {
+		CommonMethods.waitForElementVisibilityOf(dashboardBttn);
 		dashboardBttn.click();
 	}
 	public void clickpremiumBttn() {

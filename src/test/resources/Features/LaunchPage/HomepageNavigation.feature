@@ -1,7 +1,7 @@
 Feature: Verify Homepage navigation components
 
 Background:
-Given User is on SweetBalance homepage
+Given User is on the SweetBalance homepage
 
 Scenario: Verify redirection from Start Today button
 When User click the "Start Today" button

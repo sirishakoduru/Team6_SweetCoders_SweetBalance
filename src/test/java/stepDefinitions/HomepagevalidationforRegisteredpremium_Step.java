@@ -359,20 +359,17 @@ public class HomepagevalidationforRegisteredpremium_Step {
     //////////logstatus
     @Given("User is in dashboard page")
     public void user_is_in_dashboard_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        
     }
 
     @When("User clicks home tab after logging emotional state in dashboard")
     public void user_clicks_home_tab_after_logging_emotional_state_in_dashboard() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        HomePage.out();
     }
 
     @Then("User should see emoji and mood text is changed")
     public void user_should_see_emoji_and_mood_text_is_changed() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertTrue(HomePage.isboardpopuptextvisible());
     }
 
 

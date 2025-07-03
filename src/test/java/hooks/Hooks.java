@@ -49,7 +49,8 @@ public class Hooks {
 
 			File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 			try {
-				FileUtils.copyFile(screenshot, new File("target/screenshots/" + scenario.getName() + ".png"));
+				String safeScenarioName = scenario.getName().replaceAll("[\\\\/:*?\"<>|]", "").replaceAll("\\s+", "_");
+				FileUtils.copyFile(screenshot, new File("target/screenshots/" + safeScenarioName + ".png"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

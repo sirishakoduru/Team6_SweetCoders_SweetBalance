@@ -12,7 +12,7 @@ Feature: Track Glucose Validation
   Scenario: Verify subtext in form
     Given User is in home page
     When User clicks Blood Glucose
-    Then User should see subtext " Keep your health in check"
+    Then User should see glucose subtext " Keep your health in check"
 
   Scenario: Verify fields in track glucose
     Given User is in home page

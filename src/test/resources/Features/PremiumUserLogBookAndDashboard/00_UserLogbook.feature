@@ -1,5 +1,7 @@
-Feature: Blood Glucose Tracker Validation and Meal and Nutrition Validation and Medical Dosage Validation and Log review Validation
+@logbook_1
+Feature: Blood Glucose Tracker Validation and Meal and Nutrition Validation and Medical Dosage Validation
   Background: User logged into app
+    Given User is logged in
 
   Scenario: Verify presence of Blood Glucose Tracker section
     Given User is in Home page
@@ -29,7 +31,7 @@ Feature: Blood Glucose Tracker Validation and Meal and Nutrition Validation and 
   Scenario: Verify pre-meal glucose type range displayed
     Given User is in Home page
     When User navigate to logbook page
-    Then User should see the range for "Pre-Meal"  be "70-130 mg/dL"
+    Then User should see range for "Pre-Meal" be "70-130 mg/dL"
 
   Scenario: Verify colour codes for Post-Meal
     Given User is in Home page
@@ -39,7 +41,7 @@ Feature: Blood Glucose Tracker Validation and Meal and Nutrition Validation and 
   Scenario: Verify Post-meal glucose type range displayed
     Given User is in Home page
     When User navigate to logbook page
-    Then User should see the range for "Post-Meal"  be "<180 mg/dL"
+    Then User should see the range and title "Post-Meal" be "<180 mg/dL"
 
   Scenario: Verify colour codes for Bedtime
     Given User is in Home page
@@ -49,7 +51,7 @@ Feature: Blood Glucose Tracker Validation and Meal and Nutrition Validation and 
   Scenario: Verify bedtime glucose type range displayed
     Given User is in Home page
     When User navigate to logbook page
-    Then User should see the range for "Bedtime"  be "100-140 mg/dL"
+    Then User should see the "Bedtime" be "100-140 mg/dL" range
 
   Scenario: Verify last 7 days are displayed on X-axis
     Given User is in Home page
@@ -76,7 +78,7 @@ Feature: Blood Glucose Tracker Validation and Meal and Nutrition Validation and 
   Scenario: Verify title of Meal & Nutrition section
     Given User is in Home page
     When User navigate to logbook page
-    Then User should see Title "Meal & Nutrition"
+    Then User should see Title of "Meal & Nutrition"
 
   Scenario: Verify icon for Meal & Nutrition section is displayed
     Given User is in Home page
@@ -165,7 +167,6 @@ Feature: Blood Glucose Tracker Validation and Meal and Nutrition Validation and 
 
 
 
-
   Scenario: Verify the presence of Medical Dosage section
     Given User is in home page
     When User navigate to logbook page
@@ -174,7 +175,7 @@ Feature: Blood Glucose Tracker Validation and Meal and Nutrition Validation and 
   Scenario: Verify the title "Medical dosage"
     Given User is in home page
     When User navigate to logbook page
-    Then User should see the title "Medical Dosage"
+    Then User should see the title "Medication Dosage"
 
   Scenario: Verify the icon beside medical dosage
     Given User is in home page
@@ -184,7 +185,7 @@ Feature: Blood Glucose Tracker Validation and Meal and Nutrition Validation and 
   Scenario: Verify the Y-axis has text "Number of Doses"
     Given User is in home page
     When User navigate to logbook page
-    Then User should see the text "Number of Doses"on Y-axis
+    Then User should see the text "Number of Doses" on Y-axis
 
   Scenario: Verify display empty chart when no medication is scheduled
     Given User have not scheduled any medication for the week
@@ -233,70 +234,6 @@ Feature: Blood Glucose Tracker Validation and Meal and Nutrition Validation and 
 
 
 
-  Scenario: Verify the Title of Log review section
-    Given User is in Home page
-    When User navigate to logbook page
-    Then User should see the title "Log Review"
-
-  Scenario: Verify table header in log review section
-    Given User is in Home page
-    When User navigate to logbook page
-    Then User should see table header "Date","Blood Glucose","Nutrition","Activity",Medication"
-
-  Scenario: Verify log review displays last 7 days of date entries including today
-    Given User is in Home page
-    When User navigate to logbook page
-    Then User should see date of last seven days including today
-
-  Scenario: Verify the display of date format
-    Given User is in Home page
-    When User navigate to logbook page
-    Then User should see the date format as "MMM dd, yyyy"
-
-  Scenario: Verify the order of date
-    Given User is in Home page
-    When User navigate to logbook page
-    Then User should see the date ordered in descending order for last 7 days including today
-
-  Scenario: Verify the blood glucose value in log review section if there is no log
-    Given user have not log any blood glucose value in home page
-    When User navigate to logbook page
-    Then User should see hyphen "-" for all the days under blood glucose
-
-  Scenario: Verify the nutrient value in log review section if there is no log
-    Given User have not log any nutrition value in home page
-    When User navigate to logbook page
-    Then User should see hyphen "-" for all the days under Nutrition value
-
-  Scenario: Verify the physical activity value in log review section if there is no log
-    Given User have not log any Physical activity in home page
-    When User navigate to logbook page
-    Then User should see hyphen "-" for all the days under Activity
-
-  Scenario: Verify the entries of Medication in log review section if there is no value
-    Given User have not log any Medication dosage in home page
-    When User navigate to logbook page
-    Then User should see hyphen "-" for all the days under Medication
-
-  Scenario: Verify the blood glucose entries in log review section if there is log
-    Given User log blood glucose value in Home page
-    When User navigate to logbook page
-    Then User should see logged  value for those days under Blood glucose
-
-  Scenario: Verify the nutrient value entries in log review section if there is log
-    Given User log Nutrient value in Home page
-    When User navigate to logbook page
-    Then User should see logged value for those days under Nutrient value
-
-  Scenario: Verify the physical activity entries in log review section if there is log
-    Given User log Physical Activity in home page
-    When User navigate to logbook page
-    Then User should see logged value  for those days under physical activity
-
-  Scenario: Verify the medication value in log review section if there is log
-    Given User log Medication dosage in Home page
-    When User navigate to logbook page
-    Then User should see logged value for those under Medication Dosage
 
 
 

@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import utilities.LoggerLoad;
+
 public class DriverFactory {
 	
 public static WebDriver driver;
@@ -14,7 +16,7 @@ public static WebDriver driver;
 	public static ThreadLocal<WebDriver> tldriver = new ThreadLocal<>();
 	
 	public static WebDriver initializeBrowser(String browser) {
-		System.out.println("browser value is: " +browser);
+		LoggerLoad.info("browser value is: " +browser);
 		
 		if(browser.equals("chrome")) {
 			tldriver.set(new ChromeDriver());
@@ -26,7 +28,7 @@ public static WebDriver driver;
 			tldriver.set(new EdgeDriver());
 	}
 		else {
-			System.out.println("Please pass the correct browser value: " +browser);
+			LoggerLoad.info("Please pass the correct browser value: " +browser);
 		}
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
@@ -38,8 +40,8 @@ public static WebDriver driver;
 		return tldriver.get();
 	}
 	public static void quitDriver() throws Throwable {
-		//System.out.println("Quitting Browser: " + ConfigReader.getBrowserType());
 		if (tldriver.get() != null) {
+			LoggerLoad.info("Closing local browser");
 			tldriver.get().quit();
 			tldriver.remove();
 		}

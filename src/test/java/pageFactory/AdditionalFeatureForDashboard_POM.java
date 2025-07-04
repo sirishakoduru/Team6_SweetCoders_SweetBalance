@@ -6,15 +6,18 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utilities.CommonMethods;
 import utilities.LoggerLoad;
 
 public class AdditionalFeatureForDashboard_POM {
 
     WebDriver driver = DriverFactory.getDriver();
     WebDriverWait wait;
+    CommonMethods commonMethods;
 
     public AdditionalFeatureForDashboard_POM(){
         PageFactory.initElements(driver, this);
+        commonMethods = new CommonMethods();
     }
 
     @FindBy(xpath= "//button[text()='Dashboard']")
@@ -23,17 +26,23 @@ public class AdditionalFeatureForDashboard_POM {
     //Dashboard page validation for Registered premium account user
     @FindBy(xpath= "//span[@class='ml-1']")
     private WebElement kingSymbolPremiumActivated;
-    @FindBy(xpath= "//button[normalize-space()='Manage Premium']")
+    @FindBy(xpath= "//span[substring(normalize-space(.), string-length(normalize-space(.)) - string-length('Premium Activated') + 1) = 'Premium Activated']")
+    private WebElement premiumActivatedText;
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[2]/button[1]")
     private WebElement managePremiumButton;
     @FindBy(xpath= "//div[@id='radix-:r0:']")
     private WebElement dialogBox;
     @FindBy(xpath= "//span[text()='Start Date:']")
     private WebElement startDate;
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]")
+    private WebElement startDateFormat;
     @FindBy(xpath= "//span[text()='End Date:']")
     private WebElement endDate;
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]")
+    private WebElement endDateFormat;
 
     //Emotional Well being validations on Premium dashboard
-    @FindBy(xpath= "//span[text()='\uD83D\uDE0A Emotional Wellbeing']")
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/main[1]/div[4]/div[3]/div[1]/div[1]/span[1]")
     private WebElement emotionalWellBeing;
     @FindBy(xpath= "//label[normalize-space()='How are you feeling today?']")
     private WebElement questionIsDisplayed;
@@ -43,10 +52,16 @@ public class AdditionalFeatureForDashboard_POM {
     private WebElement notesOnMoodText;
     @FindBy(xpath= "//textarea[@id='notes']")
     private WebElement inputFieldText;
-    @FindBy(xpath= "//label[normalize-space()='Energy Level: 7/10']")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/main[1]/div[4]/div[3]/div[1]/div[4]/div[1]/label[1]")
     private WebElement energyLevelTextWithValue;
     @FindBy(xpath= "//span[@role='slider']")
     private WebElement energyLevelSlider;
+    @FindBy(xpath = "//span[normalize-space()='Low']")
+    private WebElement lowLabel;
+    @FindBy(xpath = "//span[normalize-space()='High']")
+    private WebElement highLabel;
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/main[1]/div[4]/div[3]/div[1]/div[2]/div[1]/button[1]/span[1]")
+    private WebElement happyEmoji;
     @FindBy(xpath= "//button[text()='Log Emotional State']")
     private WebElement logEmotionalStateButton;
     @FindBy(xpath= "//div[@class='text-sm opacity-90']")
@@ -57,7 +72,7 @@ public class AdditionalFeatureForDashboard_POM {
     private WebElement weeklyChecksCard;
     @FindBy(xpath= "//span[text()='Weekly Checks']")
     private WebElement weeklyChecksTitle;
-    @FindBy(xpath= "//div[normalize-space()='0']")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/main[1]/div[3]/div[1]/div[1]/div[2]")
     private WebElement weeklyChecksValue;
     @FindBy(xpath= "//p[normalize-space()='Total log entries per week']")
     private WebElement weeklyChecksText;
@@ -87,17 +102,21 @@ public class AdditionalFeatureForDashboard_POM {
     private WebElement carbGoalsText;
 
 
-    // Smart Insights Validation on Premium dashboard
+    //Smart Insights Validation on Premium dashboard
     @FindBy(xpath= "//span[text()='Smart Insights']")
     private WebElement smartInsightsSection;
     @FindBy(xpath= "//span[text()='Last 7 days']")
     private WebElement smartInsightsSectionLabel;
-    @FindBy(xpath= "//div[@class='rounded-lg border md:col-span-3 bg-indigo-200 text-white shadow-lg']//div[@class='space-y-4']")
-    private WebElement smartInsightsSectionTitles;
+    @FindBy(xpath= "//span[normalize-space()='Target Achievement']")
+    private WebElement targetAchievementTitle;
     @FindBy(xpath= "//div[@class='border-l-4 border-green-400 pl-3 py-2 bg-white/10 rounded-r']//p[@class='text-xs text-black/80']")
     private WebElement targetAchievementTextDisplay;
+    @FindBy(xpath= "//span[normalize-space()='Pattern Detected']")
+    private WebElement patternDetectedTitle;
     @FindBy(xpath= "//p[contains(text(),'Your glucose tends to spike between 2-3 PM. Consid')]")
     private WebElement patternDetectedTextDisplay;
+    @FindBy(xpath= "//span[normalize-space()='Suggestion']")
+    private WebElement suggestionTitle;
     @FindBy(xpath= "//p[contains(text(),'Walking for 15 minutes after dinner has shown to r')]")
     private WebElement suggestionTextDisplay;
 
@@ -112,20 +131,35 @@ public class AdditionalFeatureForDashboard_POM {
     private WebElement keepPremiumButton;
     @FindBy(xpath= "//button[text()='Cancel Premium']")
     private WebElement cancelPremiumButton;
-    @FindBy(xpath= "//div[@class='text-sm opacity-90']")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[2]/ol[1]/li[1]/div[1]/div[2]")
     private WebElement keepPremiumSuccessMessage;
-    @FindBy(xpath= "//div[@class='text-sm opacity-90']")
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[2]/ol[1]/li[1]/div[1]/div[2]")
     private WebElement cancelPremiumMessage;
-    @FindBy(xpath= "//button[@class='absolute right-2 top-2 rounded-md p-1 text-foreground/50 opacity-0 transition-opacity hover:text-foreground focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100']//*[name()='svg']")
+    @FindBy(xpath= "/html[1]/body[1]/div[3]/button[1]/*[name()='svg'][1]")
     private WebElement xButton;
 
     //Action methods
+    public void navigatedToDashboardPage() {
+        dashboardButton.click();
+    }
+    public boolean verifyDashboardPageDisplayed() {
+        try {
+            WebElement dashboardHeader = dashboardButton;
+            return dashboardHeader.isDisplayed();
+        } catch (Exception e) {
+            LoggerLoad.error("Dashboard page not loaded: " + e.getMessage());
+            return false;
+        }
+    }
+
+//--------------------------Dashboard page validation for Registered premium account user--------------------------//
     public boolean verifyKingSymbolDisplayed() {
         return kingSymbolPremiumActivated.isDisplayed();
     }
 
     public String getPremiumStatusText() {
-        return kingSymbolPremiumActivated.getText();
+        String fullText = premiumActivatedText.getText();
+        return fullText.replaceAll("^[^\\p{L}]+", "").trim();
     }
 
     public boolean verifyManagePremiumButtonVisible() {
@@ -140,15 +174,30 @@ public class AdditionalFeatureForDashboard_POM {
         return dialogBox.isDisplayed();
     }
 
-    public String getStartDateText() {
-        return startDate.getText();
+    public boolean isStartDateDisplayed() {
+        return startDate.isDisplayed();
     }
 
-    public String getEndDateText() {
-        return endDate.getText();
+    public boolean isEndDateDisplayed() {
+        return endDate.isDisplayed();
     }
 
-    //Emotional Well being validations on Premium dashboard
+    public boolean isStartDateInExpectedFormat(String expectedFormat) {
+        String actualDate = startDateFormat.getText().trim();
+        return commonMethods.isDateInFormat(actualDate, expectedFormat);
+    }
+
+    public boolean isEndDateInExpectedFormat(String expectedFormat) {
+        String actualDate = endDateFormat.getText().trim();
+        return commonMethods.isDateInFormat(actualDate, expectedFormat);
+    }
+
+
+//--------------------------Emotional Well being validations on Premium dashboard---------------------------------//
+    public WebElement getEmotionalWellBeingTitle() {
+        return emotionalWellBeing;
+    }
+
     public boolean verifyEmotionalWellBeingTitleVisible() {
         return emotionalWellBeing.isDisplayed();
     }
@@ -169,6 +218,9 @@ public class AdditionalFeatureForDashboard_POM {
         return inputFieldText.getAttribute("placeholder");
     }
 
+    public WebElement getInputFieldText() {
+        return inputFieldText;
+    }
     public void enterTextInNotes(String text) {
         inputFieldText.clear();
         inputFieldText.sendKeys(text);
@@ -178,6 +230,9 @@ public class AdditionalFeatureForDashboard_POM {
         return inputFieldText.getAttribute("value");
     }
 
+    public WebElement getEnergyLevelSlider() {
+        return energyLevelSlider;
+    }
     public boolean verifyEnergyLevelTextDisplayed() {
         return energyLevelTextWithValue.isDisplayed();
     }
@@ -185,14 +240,29 @@ public class AdditionalFeatureForDashboard_POM {
     public boolean verifyEnergyLevelSliderVisible() {
         return energyLevelSlider.isDisplayed();
     }
-
     public void moveEnergySlider(int xOffset) {
         Actions actions = new Actions(driver);
-        actions.clickAndHold(energyLevelSlider).moveByOffset(xOffset, 0).release().perform();
+        actions.clickAndHold(energyLevelSlider)
+                .moveByOffset(xOffset, 0)
+                .release()
+                .perform();
+    }
+    public WebElement getLowLabel() {
+        return lowLabel;
+    }
+    public WebElement getHighLabel() {
+        return highLabel;
+    }
+    public WebElement getEnergyLevelSliderValue() {
+        return energyLevelTextWithValue;
     }
 
     public boolean verifyLogEmotionalStateButtonVisible() {
         return logEmotionalStateButton.isDisplayed();
+    }
+
+    public void clickHappyEmoji(){
+        happyEmoji.click();
     }
 
     public void clickLogEmotionalStateButton() {
@@ -203,8 +273,9 @@ public class AdditionalFeatureForDashboard_POM {
         return logEmotionalStateSuccessMessage.getText();
     }
 
-    //User Activity Tracking on premium Dashboard
-    public String getWeeklyChecksSubTitle() {
+
+//---------------------------User Activity Tracking on premium Dashboard------------------------------------------//
+    public String getWeeklyChecksTitle() {
         return weeklyChecksTitle.getText().trim();
     }
     public String getWeeklyChecksValue() {
@@ -214,7 +285,7 @@ public class AdditionalFeatureForDashboard_POM {
         return weeklyChecksText.getText().trim();
     }
 
-    public String getExerciseMinutesSubtitle() {
+    public String getExerciseMinutesTitle() {
         return exerciseMinuteTitle.getText().trim();
     }
     public String getExerciseMinutesValue() {
@@ -224,7 +295,7 @@ public class AdditionalFeatureForDashboard_POM {
         return exerciseMinuteText.getText().trim();
     }
 
-    public String getMedAdherenceSubtitle() {
+    public String getMedAdherenceTitle() {
         return medAdherenceTitle.getText().trim();
     }
     public String getMedAdherenceValue() {
@@ -234,7 +305,7 @@ public class AdditionalFeatureForDashboard_POM {
         return medAdherenceText.getText().trim();
     }
 
-    public String getCarbGoalsSubtitle() {
+    public String getCarbGoalsTitle() {
         return carbGoalsTitle.getText().trim();
     }
     public String getCarbGoalsValue() {
@@ -245,7 +316,7 @@ public class AdditionalFeatureForDashboard_POM {
     }
 
 
-    // Smart Insights Validation on Premium dashboard
+//------------------------------Smart Insights Validation on Premium dashboard------------------------------------//
     public boolean verifySmartInsightsTitleVisible() {
         return smartInsightsSection.isDisplayed();
     }
@@ -254,26 +325,39 @@ public class AdditionalFeatureForDashboard_POM {
         return smartInsightsSectionLabel.isDisplayed();
     }
 
-    public boolean verifySmartInsightsTitlesPresent() {
-        String sectionText = smartInsightsSectionTitles.getText();
-        return sectionText.contains("Target Achievement") &&
-                sectionText.contains("Pattern detected") &&
-                sectionText.contains("Suggestion");
+    public String verifyTargetAchievementTitle(){
+        return targetAchievementTitle.getText().trim();
     }
-
     public String getTargetAchievementText() {
         return targetAchievementTextDisplay.getText().trim();
+    }
+
+    public String verifyPatternDetectedTitle(){
+        return patternDetectedTitle.getText().trim();
     }
 
     public String getPatternDetectedText() {
         return patternDetectedTextDisplay.getText().trim();
     }
 
+    public String verifySuggestionTitle(){
+        return suggestionTitle.getText().trim();
+    }
+
     public String getSuggestionText() {
         return suggestionTextDisplay.getText().trim();
     }
 
-    //Manage premium Dialog box Validation
+    public String getSmartInsightsTitleText() {
+        return smartInsightsSection.getText().trim();
+    }
+
+    public String getSmartInsightsLabelText() {
+        return smartInsightsSectionLabel.getText().trim();
+    }
+
+
+//-----------------------------------Manage premium Dialog box Validation----------------------------------------//
     public String getDialogMessage() {
         return messageDisplayInDialogBox.getText().trim();
     }
@@ -318,16 +402,16 @@ public class AdditionalFeatureForDashboard_POM {
         keepPremiumButton.click();
     }
 
-    public String getKeepPremiumSuccessMessage() {
-        return keepPremiumSuccessMessage.getText().trim();
+    public WebElement getKeepPremiumSuccessMessageElement() {
+        return keepPremiumSuccessMessage;
     }
 
     public void clickCancelPremiumButton() {
         cancelPremiumButton.click();
     }
 
-    public String getCancelPremiumMessage() {
-        return cancelPremiumMessage.getText().trim();
+    public WebElement getCancelPremiumSuccessMessageElement() {
+        return cancelPremiumMessage;
     }
 
     public void clickXButton() {

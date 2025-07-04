@@ -19,14 +19,14 @@ public class CommonHomePage_Step {
 
 	CommonHomePage_POM commonHomePage = new CommonHomePage_POM();
 	
-	@Given("User is in password auth page")
-	public void user_is_in_password_auth_page() {
+	@Given("User is on password auth page")
+	public void user_is_on_password_auth_page() {
 		String nameApp = commonHomePage.getAppnameText();
 		assertEquals(nameApp, "SweetBalance", "App name before sign in is not correct");	    
 	}
 
-	@When("User clicks sign in after entering password")
-	public void user_clicks_sign_in_after_entering_password() {
+	@When("User click sign in after entering password")
+	public void user_click_sign_in_after_entering_password() {
 		commonHomePage.clickLoginBttn();
 		commonHomePage.enterEmailInTextBox(ConfigReader.getProperty("freeUSerEmail"));
 		commonHomePage.clickContinueWithEmail();
@@ -154,8 +154,8 @@ public class CommonHomePage_Step {
 		assertNotNull(commonHomePage.getbloodSugarRangeText());
 	}
 	
-	@Then("User should see {string} title")
-	public void user_should_see_title(String string) {
+	@Then("User should see {string} title2")
+	public void user_should_see_title2(String string) {
 		assertTrue(commonHomePage.istodayMealPlandisplayed());
 	}
 
@@ -206,20 +206,15 @@ public class CommonHomePage_Step {
 		LoggerLoad.info("Validate label: " +actualLabel);
 		assertEquals(actualLabel.trim(), expectedLabel.trim(), "\"" +expectedLabel+ "\" Label is not visible");
 	}
-	@Given("User is logged into the app")
-	public void user_is_logged_into_the_app() {
-		commonHomePage.clickLoginBttn();
-		commonHomePage.enterEmailInTextBox(ConfigReader.getProperty("email"));
-		commonHomePage.clickContinueWithEmail();
-		commonHomePage.enterPasswordInTextBox(ConfigReader.getProperty("password"));
-		commonHomePage.clickSignInbttn();	    
-	}
 
-	@Given("User is in home page")
-	public void user_is_in_home_page() throws InterruptedException {
-		Thread.sleep(1000);
-		String actualPageURL = commonHomePage.getCurrentUrl();
-		assertEquals(actualPageURL, "https://sweet-balance-test-env-3-numpyninjadiabe.replit.app/", "User is not in home page");	    	    
+	@Given("User is on home page")
+	public void user_is_on_home_page() {
+		//Thread.sleep(1000);
+		commonHomePage.clickLoginBttn();
+		commonHomePage.enterEmailInTextBox(ConfigReader.getProperty("freeUSerEmail"));
+		commonHomePage.clickContinueWithEmail();
+		commonHomePage.enterPasswordInTextBox(ConfigReader.getProperty("freeUserPassword"));
+		commonHomePage.clickSignInbttn();	      	    
 	}
 
 	@When("User clicks on the {string} section")

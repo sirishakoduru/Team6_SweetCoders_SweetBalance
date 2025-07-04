@@ -116,24 +116,31 @@ public class CommonHomePage_POM {
         return userNameAfterSignIn.getText();
     }
 	public boolean isLogoutDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(logoutbttn);
 		return logoutbttn.isDisplayed();
 	}
 	public boolean isTopNavBarDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(topNavigationBar);
 		return topNavigationBar.isDisplayed();
 	}
 	public boolean isHomeDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(homebttn);
 		return homebttn.isDisplayed();
 	}
 	public boolean isDashboardDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(dashboardBttn);
 		return dashboardBttn.isDisplayed();
 	}
 	public boolean isEducationDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(educationBttn);
 		return educationBttn.isDisplayed();
 	}
 	public boolean isCurrentStatusDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(currentStatus);
 		return currentStatus.isDisplayed();
 	}
-	public boolean isLastUpdatedDisplayed() {		
+	public boolean isLastUpdatedDisplayed() {	
+		CommonMethods.waitForElementVisibilityOf(lastUpdated);
 		return lastUpdated.isDisplayed();
 	}
 	public String getlastUpdatedText() {
@@ -144,12 +151,15 @@ public class CommonHomePage_POM {
 //		return timeStamp.isDisplayed();
 //	}
 	public boolean islatestHbA1cDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(latestHbA1c);
 		return latestHbA1c.isDisplayed();
 	}
 	public boolean isBMIdisplayed() {
+		CommonMethods.waitForElementVisibilityOf(BMI);
 		return BMI.isDisplayed();
 	}
 	public boolean isbloodSugarLeveldisplayed() {
+		CommonMethods.waitForElementVisibilityOf(bloodSugarLevel);
 		return bloodSugarLevel.isDisplayed();
 	}
 	public String getHbA1CValueText() {
@@ -161,6 +171,7 @@ public class CommonHomePage_POM {
 		return bmiValue.getText();
 	}
 	public String getbloodSugarValueText() {
+		CommonMethods.waitForElementVisibilityOf(bloodSugarValue);
 		LoggerLoad.info("Value of HbA1C is: " +bloodSugarValue.getText());
 		return bloodSugarValue.getText();
 	}
@@ -213,54 +224,71 @@ public class CommonHomePage_POM {
 		return excerciseBttn.getText();
 	}
 	public boolean ismealSymbolDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(mealSymbol);
 		return mealSymbol.isDisplayed();
 	}
 	public boolean isexcerciseSymbolDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(excerciseSymbol);
 		return excerciseSymbol.isDisplayed();
 	} 
 	public String getviewfullMealPlanText() {
+		CommonMethods.waitForElementVisibilityOf(viewfullMealPlan);
 		return viewfullMealPlan.getText();
 	}
 	public void clickbreakfast() {
+		CommonMethods.waitForElementTobeClick(breakfastBttn);;
 		breakfastBttn.click();
 	}
 	public void clicklunch() {
+		CommonMethods.waitForElementTobeClick(lunchBttn);
 		lunchBttn.click();
 	}
 	public void clickdinner() {
+		CommonMethods.waitForElementTobeClick(dinnerBttn);
 		dinnerBttn.click();
 	}
 	public void clicksnacks() {
+		CommonMethods.waitForElementTobeClick(snacksBttn);
 		snacksBttn.click();
 	}
 	public boolean isbreakfastDetailsDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(breakfastDetails);
 		return breakfastDetails.isDisplayed();
 	}
 	public boolean islunchDetailsDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(lunchDetails);
 		return lunchDetails.isDisplayed();
 	}
 	public boolean isdinnerDetailsDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(dinnerDetails);
 		return dinnerDetails.isDisplayed();
 	}
 	public boolean issnacksDetailsDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(snacksDetails);
 		return snacksDetails.isDisplayed();
 	}
 	public void clickmealPlanBttn() {
+		CommonMethods.waitForElementTobeClick(mealPlanBttn);
 		mealPlanBttn.click();
 	}
 	public void clickexcerciseBttn() {
+		CommonMethods.waitForElementTobeClick(excerciseBttn);
 		excerciseBttn.click();
 	}
 	public boolean istitlePremealDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(titlePremeal);
 		return titlePremeal.isDisplayed();
 	}
 	public boolean isdetailsPreMealDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(detailsPreMeal);
 		return detailsPreMeal.isDisplayed();
 	}
 	public boolean isitemPreMealDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(itemPreMeal);
 		return itemPreMeal.isDisplayed();
 	}
 	public boolean iscaloriePreMealDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(caloriesPremeal);
 		return caloriesPremeal.isDisplayed();
 	}
 	public List<String> retrivetimeElementsTexts() {

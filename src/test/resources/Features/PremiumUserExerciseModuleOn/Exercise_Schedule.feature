@@ -14,7 +14,8 @@ Feature: Exercise Schedule Page Validation
     Then User should redirect to Exercise schedule
 
   Scenario: Verify page title is displayed
-    Then User should see title "Today's Exercise Schedule"
+
+    Then User should see titleText "Today's Exercise Schedule"
 
   Scenario: Verify "Back to Home" button is visible
     Then User should see "Back to Home" button in Today's Exercise schedule page

@@ -6,10 +6,10 @@ Feature: Food Intake Validation
 
   Scenario: Verify title in Food Intake form
     When User clicks Food Intake
-    Then User should see title "Food Intake Tracker"
+    Then User should see Food Intake title "Food Intake Tracker"
 
   Scenario: Verify subtext in form
-    Then User should see subtext "Track what you eat to manage your diabetes better"
+    Then User should see the subtext "Track what you eat to manage your diabetes better"
 
   Scenario: Verify the presence of 4 tabs in food intake
     Then User should see "Breakfast, Lunch, dinner, snack" tabs
@@ -30,7 +30,7 @@ Feature: Food Intake Validation
     Then User should see "Medium (1 cup)" as the default value in the Serving Size dropdown
 
   Scenario: Verify the dropdown options for serving size
-    Then User should see small (1/2 cup), Medium (1 cup), Large (2 cup), Custom
+    Then User should see small (half cup), Medium (1 cup), Large (2 cup),Custom
 
   Scenario: Verify the presence calculator icon in calorie
     Then User should see calculator icon in calorie

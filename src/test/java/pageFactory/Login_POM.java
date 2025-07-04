@@ -444,9 +444,19 @@ public class Login_POM {
 	    }
 	}
 	
+
+	  public void performLogin() {
+		  	clickLoginButton();
+	        enterEmail();
+	        clickContinueWithEmail();
+	        enterPassword();
+	        clickSigninButton();
+	    }
+	
 	public void clickOptionInStep1() {
 		option2OfSugarRebellion.click();
 	}
+
 	
 	public String getStep2Text() {
 		return Step2Text.getText().trim();

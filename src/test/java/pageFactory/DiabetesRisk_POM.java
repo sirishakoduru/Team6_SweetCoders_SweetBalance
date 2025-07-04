@@ -51,6 +51,7 @@ public class DiabetesRisk_POM {
 		return diabetesPopUp.isDisplayed();
 	}
 	public String getanswerQuestext() {
+		CommonMethods.waitForElementVisibilityOf(answerQues);
 		return answerQues.getText();
 	}
 	public boolean iscancelBttnDisplayed() {

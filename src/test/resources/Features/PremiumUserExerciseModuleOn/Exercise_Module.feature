@@ -9,7 +9,7 @@ Feature: Exercise Module Functional Testing
     Then "View Full Schedule" button is displayed on the right
 
   Scenario: Verify navigation to "Today's Exercise Schedule" page
-    When User clicks the "View Full Schedule" button1
+    When User clicks the "View Full Schedule" Schedulebutton
     Then User is redirected to "Today's Exercise Schedule" page
 
   Scenario: Verify "Warm Up" tab is displayed

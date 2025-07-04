@@ -47,8 +47,8 @@ public class LoginPage_Step {
 	    Assert.assertEquals(string,headingText);
 	}
 
-	@Then("User should see {string}")
-	public void user_should_see(String string) {
+	@Then("User should see account {string}")
+	public void user_should_see_account(String string) {
 	    
 	    login.isSigninAccountText();
 	}

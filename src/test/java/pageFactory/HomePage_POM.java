@@ -132,51 +132,67 @@ public class HomePage_POM {
 		}
 		
 		public boolean isheartIconDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(heartIcon);
 			return heartIcon.isDisplayed();
 		}
 		public boolean issquareIconDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(squareIcon);
 			return squareIcon.isDisplayed();
 		}
 		public boolean iscircleIconDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(circleIcon);
 			return circleIcon.isDisplayed();
 		}
 		public boolean isJAmesDDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(JAmesD);
 			return JAmesD.isDisplayed();
 		}
 		public boolean ismariaLDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(mariaL);
 			return mariaL.isDisplayed();
 		}
 		public boolean isrobertTDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(robertT);
 			return robertT.isDisplayed();
 		}
 		public boolean isjoinCommunityDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(joinCommunity);
 			return joinCommunity.isDisplayed();
 		}
 		public boolean isfiveStarsCommunityDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(fiveStarsCommunity);
 			return fiveStarsCommunity.isDisplayed();
 		}
 		public boolean isstarsJamesDDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(starsJamesD);
 			return starsJamesD.isDisplayed();
 		}
 		public boolean isstarsMariaLDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(starsMariaL);
 			return starsMariaL.isDisplayed();
 		}
 		public boolean isstarsRobertTDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(starsRobertT);
 			return starsRobertT.isDisplayed();
 		}
 		public boolean istakeControlDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(takeControl);
 			return takeControl.isDisplayed();
 		}
 		public boolean ischeckRiskDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(checkRiskBttn);
 			return checkRiskBttn.isDisplayed();
 		}
 		public void clickStartBttn() {
+			CommonMethods.waitForElementTobeClick(startBttn);
 			startBttn.click();
 		}
 		public boolean isloginBttnDisplayed() {
+			CommonMethods.waitForElementVisibilityOf(loginBttn);
 			return loginBttn.isDisplayed();
 		}
 		public void clickloginBttn() {
+			CommonMethods.waitForElementTobeClick(loginBttn);
 			loginBttn.click();
 		}
 		public void clickcheckRiskBttn() {

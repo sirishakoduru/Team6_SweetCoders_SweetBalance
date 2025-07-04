@@ -89,6 +89,7 @@ public class CommonHomePage_POM {
         return Appname.getText();
     }	
 	public void clickLoginBttn() {
+		CommonMethods.waitForElementTobeClick(loginbttn);
 		loginbttn.click();
 	}
 	public void enterEmailInTextBox(String email) {
@@ -96,12 +97,15 @@ public class CommonHomePage_POM {
 		enterEmail.sendKeys(email);
 	}
     public void clickContinueWithEmail() {
+    	CommonMethods.waitForElementTobeClick(continueWithemail);
     	continueWithemail.click();
     }
     public void clickSignInbttn() {
+    	CommonMethods.waitForElementVisibilityOf(signInBttn);
     	signInBttn.click();
     }
 	public void enterPasswordInTextBox(String password) {
+		CommonMethods.waitForElementVisibilityOf(enterPassword);
 		enterPassword.clear();
 		enterPassword.sendKeys(password);
 	}
@@ -218,9 +222,11 @@ public class CommonHomePage_POM {
 		return itemTexts;
 	}
 	public String getmealPlanText() {
+		CommonMethods.waitForElementVisibilityOf(mealPlanBttn);
 		return mealPlanBttn.getText();
 	}
 	public String getexcerciseText() {
+		CommonMethods.waitForElementVisibilityOf(excerciseBttn);
 		return excerciseBttn.getText();
 	}
 	public boolean ismealSymbolDisplayed() {

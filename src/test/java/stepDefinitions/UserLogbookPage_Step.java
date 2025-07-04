@@ -38,11 +38,6 @@ public class UserLogbookPage_Step {
 //--------------------------------Blood Glucose Tracker Validation---------------------------------------------//
     @Given("User is in Home page")
     public void user_is_in_home_page() {
-//        loginPom.getloginurl();
-//        commonHomePage.enterEmailInTextBox(ConfigReader.getProperty("userEmail"));
-//        commonHomePage.clickContinueWithEmail();
-//        commonHomePage.enterPasswordInTextBox(ConfigReader.getProperty("userPassword"));
-//        commonHomePage.clickSignInbttn();
         LoggerLoad.info("Navigated to Home Page after login");
     }
 
@@ -485,7 +480,7 @@ public class UserLogbookPage_Step {
     public void user_should_see_logged_value_for_those_days_under_blood_glucose() {
         boolean hasLog = logbookPage.verifyAnyBloodGlucoseValueLogged();
         if (!hasLog) {
-            LoggerLoad.warn("No nutrient value logged yet – skipping test temporarily.");
+            LoggerLoad.warn("No nutrient value logged yet.");
             return;
         }
         Assert.assertTrue("Expected at least one Blood glucose to be logged", hasLog);
@@ -500,7 +495,7 @@ public class UserLogbookPage_Step {
     public void user_should_see_logged_value_for_those_days_under_nutrient_value() {
         boolean hasLog = logbookPage.verifyAnyNutrientValueLogged();
         if (!hasLog) {
-            LoggerLoad.warn("No nutrient value logged yet – skipping test temporarily.");
+            LoggerLoad.warn("No nutrient value logged yet.");
             return;
         }
         Assert.assertTrue("Expected at least one nutrient value to be logged", hasLog);
@@ -515,7 +510,7 @@ public class UserLogbookPage_Step {
     public void user_should_see_logged_value_for_those_days_under_physical_activity() {
         boolean result = logbookPage.verifyAnyPhysicalActivityValueLogged();
         if (!result) {
-            LoggerLoad.warn("No activity data present — skipping assertion temporarily.");
+            LoggerLoad.warn("No activity data present.");
             return;
         }
         Assert.assertTrue("Expected at least one logged value in Activity column", result);

@@ -5,10 +5,10 @@ Feature: Physical activity Validation
 
   Scenario: Verify title in physical activity form
     When User clicks physical activity
-    Then User should see title "Physical Activity"
+    Then User should see physical activity title "Physical Activity"
 
   Scenario: Verify subtext in form
-    Then User should see subtext "Track your fitness journey"
+    Then User should see activity subtext "Track your fitness journey"
 
   Scenario: Verify fields in track glucose
     Then User should see field for Activity Type, Duration, Date, Intensity

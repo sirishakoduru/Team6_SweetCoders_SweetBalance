@@ -8,9 +8,9 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 
 
-@CucumberOptions(features = {"src/test/resources/Features"},
-//tags = "@Login_01",
-
+@CucumberOptions(
+		//tags = "@Login_01",
+		features = {"src/test/resources/features/PremiumUserRecordData/FoodIntakeValidation.feature"},
         publish = true,
         glue = {"stepDefinitions", "hooks"},
         plugin = {"pretty", "html:target/CucumberReports/CucumberReport.html",

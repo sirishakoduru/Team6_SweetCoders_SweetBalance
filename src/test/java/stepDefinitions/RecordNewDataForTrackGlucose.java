@@ -21,20 +21,15 @@ public class RecordNewDataForTrackGlucose {
 	 CommonMethods common = new CommonMethods();
 	  
 	//------TrackGlucose Validation--------
-	@Given("User is in home page after logged into app")
-	public void user_is_in_home_page_after_logged_into_app() {
-	 	login.performLogin();
-   	 WebElement homePageTitle = exercisePage.getCurrentStatusHeader(); 
-   	 common.waitForElementVisibilityOf(homePageTitle);
-   	System.out.println("Current page title: " + webDriver.getTitle());
-   	 Assert.assertTrue("Home page title not displayed", homePageTitle.isDisplayed());
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Given("User is in home page")
-	public void user_is_in_home_page() {
-	   
-	}
+//	@Given("User is in home page after logged into app")
+//	public void user_is_in_home_page_after_logged_into_app() {
+//	 	login.performLogin();
+//   	 WebElement homePageTitle = exercisePage.getCurrentStatusHeader(); 
+//   	 common.waitForElementVisibilityOf(homePageTitle);
+//   	System.out.println("Current page title: " + webDriver.getTitle());
+//   	 Assert.assertTrue("Home page title not displayed", homePageTitle.isDisplayed());
+//	    throw new io.cucumber.java.PendingException();
+//	}
 
 	@When("User clicks Blood Glucose")
 	public void user_clicks_blood_glucose() {
@@ -46,8 +41,8 @@ public class RecordNewDataForTrackGlucose {
 		Assert.assertEquals(expectedTitle, TrackGlucosePage.getTitleText());
 	}
 	
-	@Then("User should see subtext {string}")
-	public void user_should_see_subtext(String expectedText) {
+	@Then("User should see glucose subtext {string}")
+	public void user_should_see_glucose_subtext(String expectedText) {
 		Assert.assertEquals(expectedText, TrackGlucosePage.getSubtext());
 	}
 
@@ -95,8 +90,8 @@ public class RecordNewDataForTrackGlucose {
 		Assert.assertTrue(TrackGlucosePage.areButtonsPresent());
 	}
 
-	@Then("User should see date picker")
-	public void user_should_see_date_picker() {
+	@Then("User should see the date picker")
+	public void user_should_see_the_date_picker() {
 		Assert.assertTrue(TrackGlucosePage.isDatePickerPresent());
 	}
 
@@ -122,8 +117,8 @@ public void user_clicks_record_reading_after_valid_reading() {
 	TrackGlucosePage.enterGlucoseValue("120");
 	TrackGlucosePage.clickRecordReading();
 }
-@Then("User should see {string}")
-public void user_should_see_success_message(String expected) {
+@Then("User should see the message {string}")
+public void user_should_see_the_message(String expected) {
 	Assert.assertTrue(TrackGlucosePage.isSuccessMessageDisplayed());
 
 }
@@ -147,28 +142,28 @@ public void user_should_see_transition_details_highlights() {
 	 Assert.assertTrue(TrackGlucosePage.isAnyTransitionHighlighted());
 }
 
-@When("User clicks date picker")
-public void user_clicks_date_picker() {
+@When("User clicks date picker button")
+public void user_clicks_date_picker_button() {
    TrackGlucosePage.openDatePicker();
 }
 
-@Then("User should see date calendar")
+@Then("User should see date calendar visible")
 public void user_should_see_date_calendar() {
 	Assert.assertTrue(TrackGlucosePage.isCalendarVisible());
 }
 
-@Then("User should see today's date highlighted")
-public void user_should_see_today_s_date_highlighted() {
+@Then("User should see today date highlighted")
+public void user_should_see_today_date_highlighted() {
 	Assert.assertTrue(TrackGlucosePage.isTodayDateHighlighted());
 }
 
-@Then("User should see previous button in date")
-public void user_should_see_previous_button_in_date() {
+@Then("User should see previous button in date for glucose")
+public void user_should_see_previous_button_in_date_for_glucose() {
 	Assert.assertTrue(TrackGlucosePage.isPrevDateButtonVisible());
 }
 
-@Then("User should see next button in date")
-public void user_should_see_next_button_in_date() {
+@Then("User should see next button in date for glucose")
+public void user_should_see_next_button_in_date_for_glucose() {
 	Assert.assertTrue(TrackGlucosePage.isNextDateButtonVisible());
 }
 }

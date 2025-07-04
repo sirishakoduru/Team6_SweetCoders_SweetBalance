@@ -12,7 +12,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageFactory.CommonHomePage_POM;
-import utilities.CommonMethods;
 import utilities.ConfigReader;
 import utilities.LoggerLoad;
 
@@ -29,9 +28,9 @@ public class CommonHomePage_Step {
 	@When("User clicks sign in after entering password")
 	public void user_clicks_sign_in_after_entering_password() {
 		commonHomePage.clickLoginBttn();
-		commonHomePage.enterEmailInTextBox(ConfigReader.getProperty("email"));
+		commonHomePage.enterEmailInTextBox(ConfigReader.getProperty("freeUSerEmail"));
 		commonHomePage.clickContinueWithEmail();
-		commonHomePage.enterPasswordInTextBox(ConfigReader.getProperty("password"));
+		commonHomePage.enterPasswordInTextBox(ConfigReader.getProperty("freeUserPassword"));
 		commonHomePage.clickSignInbttn();
 	}
 
@@ -44,7 +43,7 @@ public class CommonHomePage_Step {
 	@Then("User should see name displayed at the top-right corner of the home page")
 	public void user_should_see_name_displayed_at_the_top_right_corner_of_the_home_page() {
 	    String username = commonHomePage.getUsernameTextAfterSignIn();
-	    String expectedUsername = ConfigReader.getProperty("username");
+	    String expectedUsername = ConfigReader.getProperty("freeUsername");
 	    assertEquals(username, expectedUsername ,"Correct username is not displayed");
 	}
 
@@ -207,20 +206,15 @@ public class CommonHomePage_Step {
 		LoggerLoad.info("Validate label: " +actualLabel);
 		assertEquals(actualLabel.trim(), expectedLabel.trim(), "\"" +expectedLabel+ "\" Label is not visible");
 	}
-	@Given("User is logged into the app")
-	public void user_is_logged_into_the_app() {
-		commonHomePage.clickLoginBttn();
-		commonHomePage.enterEmailInTextBox(ConfigReader.getProperty("email"));
-		commonHomePage.clickContinueWithEmail();
-		commonHomePage.enterPasswordInTextBox(ConfigReader.getProperty("password"));
-		commonHomePage.clickSignInbttn();	    
-	}
 
 	@Given("User is in home page")
-	public void user_is_in_home_page() throws InterruptedException {
-		Thread.sleep(1000);
-		String actualPageURL = commonHomePage.getCurrentUrl();
-		assertEquals(actualPageURL, "https://sweet-balance-test-env-3-numpyninjadiabe.replit.app/", "User is not in home page");	    	    
+	public void user_is_in_home_page() {
+		//Thread.sleep(1000);
+		commonHomePage.clickLoginBttn();
+		commonHomePage.enterEmailInTextBox(ConfigReader.getProperty("freeUSerEmail"));
+		commonHomePage.clickContinueWithEmail();
+		commonHomePage.enterPasswordInTextBox(ConfigReader.getProperty("freeUserPassword"));
+		commonHomePage.clickSignInbttn();	      	    
 	}
 
 	@When("User clicks on the {string} section")

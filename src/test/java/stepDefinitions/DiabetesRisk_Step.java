@@ -16,6 +16,10 @@ public class DiabetesRisk_Step {
 
 	DiabetesRisk_POM diabetesRisk = new DiabetesRisk_POM();
 	
+	@Given("User is on the SweetBalance homepage")
+	public void user_is_on_the_sweet_balance_homepage() {
+		LoggerLoad.info("User is on sweetbalance homepage");
+	}
 	@When("User clicks {string} button")
 	public void user_clicks_button(String string) {
 	    diabetesRisk.clickCheckRiskRttn();	    
@@ -35,38 +39,32 @@ public class DiabetesRisk_Step {
 
 	@Then("User should see Cancel button")
 	public void user_should_see_cancel_button() {
-		assertTrue(diabetesRisk.iscancelBttnDisplayed());
-	    
+		assertTrue(diabetesRisk.iscancelBttnDisplayed());	    
 	}
 
 	@Then("User should see Calculate Risk button")
-	public void user_should_see_calculate_risk_button() {
-	    
+	public void user_should_see_calculate_risk_button() {	    
 		assertTrue(diabetesRisk.iscalculateRiskBttnDisplayed());
 	}
 
 	@Then("User should see Calculate Risk button disabled")
 	public void user_should_see_calculate_risk_button_disabled() {
-		assertFalse(diabetesRisk.iscalculateRiskBttnEnabled());
-	    
+		assertFalse(diabetesRisk.iscalculateRiskBttnEnabled());	    
 	}
 
 	@Then("User should see Age input field to have stepper controls")
 	public void user_should_see_age_input_field_to_have_stepper_controls() {
-	    assertTrue("number".equalsIgnoreCase(diabetesRisk.getAgeInputType()));
-	    
+	    assertTrue("number".equalsIgnoreCase(diabetesRisk.getAgeInputType()));	    
 	}
 
 	@Then("User should see weight input field to have stepper controls")
 	public void user_should_see_weight_input_field_to_have_stepper_controls() {
-		assertTrue("number".equalsIgnoreCase(diabetesRisk.getWeightInputType()));
-	    
+		assertTrue("number".equalsIgnoreCase(diabetesRisk.getWeightInputType()));	    
 	}
 
 	@Then("User should see check box for Family history of diabetes field")
 	public void user_should_see_check_box_for_family_history_of_diabetes_field() {
-		assertTrue(diabetesRisk.isfamilyHistoryInputDisplayed());
-	    
+		assertTrue(diabetesRisk.isfamilyHistoryInputDisplayed());	    
 	}
 
 	@Then("User should be able to view the placeholder {string} in the age field")
@@ -92,14 +90,12 @@ public class DiabetesRisk_Step {
 
 	@Then("User should see dropdown for Blood Pressure")
 	public void user_should_see_dropdown_for_blood_pressure() {
-	    assertEquals(diabetesRisk.getbloodPressureTagName(), "select");
-	    
+	    assertEquals(diabetesRisk.getbloodPressureTagName(), "select");	    
 	}
 
 	@Then("User should see dropdown for Diet Quality")
 	public void user_should_see_dropdown_for_diet_quality() {
-		assertEquals(diabetesRisk.getdietQualityTagName(), "select");
-	    
+		assertEquals(diabetesRisk.getdietQualityTagName(), "select");	    
 	}
 
 	@Then("User should see {string} as the default option")

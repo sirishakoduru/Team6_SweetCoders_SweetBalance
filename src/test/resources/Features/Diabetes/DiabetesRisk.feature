@@ -1,7 +1,7 @@
 Feature: Verification on Diabetes Risk Analyzer
 
 Background:
-Given User is on SweetBalance homepage
+Given User is on the SweetBalance homepage
 
 Scenario: Validate modal dialog heading
 When User clicks "Check Your Risk" button

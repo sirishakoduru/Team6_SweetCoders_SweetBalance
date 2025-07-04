@@ -1,7 +1,5 @@
 package pageFactory;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.WebDriver;
@@ -53,6 +51,7 @@ public class DiabetesRisk_POM {
 		return diabetesPopUp.isDisplayed();
 	}
 	public String getanswerQuestext() {
+		CommonMethods.waitForElementVisibilityOf(answerQues);
 		return answerQues.getText();
 	}
 	public boolean iscancelBttnDisplayed() {

@@ -9,7 +9,7 @@ Feature: Exercise Module Functional Testing
     Then "View Full Schedule" button is displayed on the right
 
   Scenario: Verify navigation to "Today's Exercise Schedule" page
-    When User clicks the "View Full Schedule" button
+    When User clicks the "View Full Schedule" button1
     Then User is redirected to "Today's Exercise Schedule" page
 
   Scenario: Verify "Warm Up" tab is displayed
@@ -75,9 +75,9 @@ Feature: Exercise Module Functional Testing
     Then Success dialog is shown
 
   Scenario: Verify button status changes to "Completed"
-    When User clicks the "Mark As Completed" button
+    When User clicks the "Mark As Completed" button1
     Then Button changes to "Completed"
 
   Scenario: Verify undo option is displayed after marking completed
-    When User clicks the "Mark As Completed" button
+    When User clicks the "Mark As Completed" button1
     Then Undo option is visible

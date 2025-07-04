@@ -18,13 +18,13 @@ public class HomePage_Step {
 	
 	@Given("User launches the browser")
 	public void user_launches_the_browser() {	
-		lauchUI.navigateBack();
+		LoggerLoad.info("User has already launched browser in hooks");
 	}
 
 	@When("User enters the SweetBalance url")
 	public void user_enters_the_sweet_balance_url() {
 		LoggerLoad.info("User is on sweet balance App");
-	    lauchUI.openBaseURL();
+	    //lauchUI.openBaseURL();
 	}
 
 	@Then("User should see app name on the top left")

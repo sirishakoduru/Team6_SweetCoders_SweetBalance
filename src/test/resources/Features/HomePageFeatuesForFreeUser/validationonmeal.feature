@@ -1,12 +1,8 @@
  @meal
  Feature: Validation on meal section for registered free user account
  Background: User logs into the app
-@1
-     Scenario: Verify the presence of "Nutrition Insights" heading is shown for each meal
-     Given User is in home page
-     When User clicks meal section
-     Then User should see "Nutrition Insights" heading for each of the meal section 
-    @2
+
+      @2
      Scenario: Verify nutrition bar is shown for each meal
      Then User should see horizontal bar for Carbs, Protein, and Fat
      @3

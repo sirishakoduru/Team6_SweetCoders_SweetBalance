@@ -61,7 +61,6 @@ Background:  User is in Home Page after logged in
   @t31
   Scenario:  verify breathing steps are displayed
   Then  User should see the steps "Inhale 4 seconds", "Hold 7 seconds", "Exhale 8 seconds"
-  ////4
   @t32
   Scenario: Verify start button functionality
   When User clicks the "Start Breathing Exercise" button during the breathing exercise
@@ -71,17 +70,7 @@ Background:  User is in Home Page after logged in
   Given  User started Breathing cycle
   When  User view the current phase begins
   Then  User should see the breathing cycle displays "Inhale" which last for 4 seconds
-    
-  #Scenario: Verify the hold phase in breathing cycle
-  #Given User see the inhale phase is completed
-  #When User view the next phase begins
-  #Then  User should see the breathing cycle displays " hold" which last for 7 seconds
-    
-   #Scenario: Verify the Exhale phase in breathing cycle
-  # Given  User see the hold phase has completed
-   #When  User view the next phase begins
-   #Then User should see the breathing cycle displays "Exhale" which last for 8 seconds
-    @t34
+   @t34
    Scenario: Verify the count of cycle completed
    Given  User completed one full cycle
    When  User completes full breathing cycle

@@ -46,10 +46,12 @@ public class Homepagefeaturesonlyforfreeuser_POM {
     private WebElement excercise;
     @FindBy(xpath ="//*[@id=\"root\"]/div[1]/main/div[2]/div/div/div[2]/div/div[1]/button")
     private WebElement excercisefullschedule;
-    
   
+    @FindBy(xpath ="//*[text()=' Login")
+    private WebElement loginclick;
     // Login Method with explicit waits
     public void login() {
+    	loginclick.click();
         driver.get(auth_page);
         wait.until(ExpectedConditions.visibilityOf(email)).sendKeys("manasa.venna@yahoo.com");
         continueemail.click();
@@ -85,7 +87,7 @@ public class Homepagefeaturesonlyforfreeuser_POM {
        // }
    // }
     public void seehorizontalcrabs() {
-    	login();
+    	heading();
     	JavascriptExecutor js = (JavascriptExecutor) driver;
     	js.executeScript("window.scrollBy(0,500)");
     	

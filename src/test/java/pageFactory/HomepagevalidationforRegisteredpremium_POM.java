@@ -9,6 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import driver.DriverFactory;
 import utilities.ConfigReader;
@@ -138,6 +141,42 @@ public class HomepagevalidationforRegisteredpremium_POM {
     WebElement out1;
     @FindBy(xpath = "//*[@id=\"root\"]/div[1]/nav/div/div/button[3]")
     WebElement board;
+    
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div[2]/div/div/div[2]/div/div[1]/h2")
+    WebElement flexCardSubtitle;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div/div[1]/h3")
+    WebElement preMealCal;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div/div[4]/div/div[2]/div[1]/div[2]/h3")
+    WebElement mealCal;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div/div[4]/div/div[2]/div[1]/div[2]/h3")
+    WebElement totalCal;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div/div[1]/div/div[1]")
+    WebElement calorieInfo;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div[3]/div/button[2]")
+    WebElement donutChart;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div[3]/div/button[2]")
+    List<WebElement> donutSegments;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div[3]/div/button[2]")
+    List<WebElement> macroPercentages;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div[3]/div/button[2]")
+    List<WebElement> legendLabels;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div[3]/div/button[2]")
+    WebElement barChart;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div[3]/div/button[2]")
+    List<WebElement> macroBars;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div[2]/div/div/div[2]/div/div[3]/div[2]/div/div[4]/div/div[2]/div[1]/div[2]/h3")
+    WebElement calorie1;
     
     // Action Methods
     public void login() {
@@ -492,7 +531,128 @@ public class HomepagevalidationforRegisteredpremium_POM {
        notcompleted.click();
         wait.until(ExpectedConditions.visibilityOf(notcompleted));
         return notcompleted.getCssValue("background-color");
+    }//////////////////
+    public String getFlexCardSubtitle() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        return flexCardSubtitle.getText();
     }
+
+    public String getPreMealCalories() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        return preMealCal.getText();
+    }
+
+    public int getMealCalories() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        return Integer.parseInt(mealCal.getText().replace("kcal", "").trim());
+    }
+
+    public int getTotalCalories() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        return Integer.parseInt(totalCal.getText().replace("kcal", "").trim());
+    }
+
+    public boolean isCalorieInfoOnRight() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        String floatStyle = calorieInfo.getCssValue("float");
+        return floatStyle.equalsIgnoreCase("right") || floatStyle.contains("right");
+    }
+
+    public boolean isDonutChartVisible() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        return donutChart.isDisplayed();
+    }
+
+    public boolean areDonutChartColorsDistinct() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        Set<String> colors = donutSegments.stream()
+            .map(e -> e.getCssValue("background-color"))
+            .collect(Collectors.toSet());
+        return colors.size() >= 4;
+    }
+
+    public boolean doMacroPercentagesMatchExpected() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        int[] expected = {40, 30, 20, 10};
+        for (int i = 0; i < macroPercentages.size(); i++) {
+            int val = Integer.parseInt(macroPercentages.get(i).getText().replace("%", "").trim());
+            if (val != expected[i]) return false;
+        }
+        return true;
+    }
+
+    public boolean areSegmentColorsConsistentWithLabels() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        for (int i = 0; i < donutSegments.size(); i++) {
+            if (!donutSegments.get(i).getCssValue("background-color")
+                .equals(legendLabels.get(i).getCssValue("color"))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isBarChartVisible() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        return barChart.isDisplayed();
+    }
+
+    public boolean areAllMacroBarsVisible() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        return macroBars.size() >= 4;
+    }
+
+    public boolean areBarChartValuesConsistent() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        for (WebElement bar : macroBars) {
+            String label = bar.getAttribute("data-label");
+            String value = bar.getText().replace("g", "").trim();
+            if (label == null || value.isEmpty()) return false;
+        }
+        return true;
+    }
+
+    public int getTotalMacroPercentage() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        return macroPercentages.stream()
+            .mapToInt(e -> Integer.parseInt(e.getText().replace("%", "").trim()))
+            .sum();
+    }
+
+    public boolean isFullMealPlanPageDisplayed1() {
+    	login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("window.scrollBy(0,500)");
+        return driver.getCurrentUrl().contains("/full-meal-plan");
+    }
+
+
     //////homepage challenge
     public void challenge() {
     	login();

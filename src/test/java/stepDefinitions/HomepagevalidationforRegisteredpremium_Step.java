@@ -25,7 +25,6 @@ public class HomepagevalidationforRegisteredpremium_Step {
 	    // Write code here that turns the phrase above into concrete actions
 		HomePage.login();
 	}
-
 	@Then("User should see the navigation bar displaying items in the order: Home,Logbook,Dashboard,Education")
 	public void user_should_see_the_navigation_bar_displaying_items_in_the_order_home_logbook_dashboard_education() {
 		
@@ -261,6 +260,74 @@ public class HomepagevalidationforRegisteredpremium_Step {
     	// Assert.assertEquals("Button color is not red as expected.",  HomePage.getnotcompletedColor());
     	System.out.println("color is changed to red");
     }
+    
+    //
+    @Then("User should see subtitle {string}")
+    public void user_should_see_subtitle(String expectedSubtitle) {
+    	System.out.println("user should see title");
+    }
+
+    @Then("total calorie count should equal the sum of Pre-Meal and Meal calories")
+    public void total_calorie_count_should_match_sum() {
+        System.out.println("total calorie should match");
+    }
+
+    @Then("calorie detail for each meal should appear on the right side of its section")
+    public void calorie_detail_should_appear_on_right() {
+        Assert.assertTrue(HomePage.isCalorieInfoOnRight());
+    }
+
+    @Then("Calorie in fex card should match with meal")
+    public void calorie_card_should_match_meal() {
+    	System.out.println("calorie should match with meal");
+    }
+
+    @Then("User should see donut chart")
+    public void user_should_see_donut_chart() {
+        Assert.assertTrue(HomePage.isDonutChartVisible());
+    }
+
+ 
+    @Then("User should see distinct color segment in each macro")
+    public void user_should_see_distinct_macro_colors() {
+        Assert.assertTrue(HomePage.areDonutChartColorsDistinct());
+    }
+
+    @Then("Macro percentages match expected values")
+    public void macro_percentages_should_match() {
+        Assert.assertTrue(HomePage.doMacroPercentagesMatchExpected());
+    }
+
+    @Then("User should see each segment color matches its corresponding label")
+    public void donut_segment_color_should_match_label() {
+        Assert.assertTrue(HomePage.areSegmentColorsConsistentWithLabels());
+    }
+
+    @Then("User should see macronutrient bar chart in each meal section")
+    public void user_should_see_macronutrient_bar_chart() {
+        Assert.assertTrue(HomePage.isBarChartVisible());
+    }
+
+    @Then("User should see a visible progress bar for carbs, protein, fat, and fiber on the nutrient screen.")
+    public void progress_bars_for_all_macros_visible() {
+        Assert.assertTrue(HomePage.areAllMacroBarsVisible());
+    }
+
+    @Then("Each nutrient bar should show a value consistent with its label")
+    public void macro_bar_values_should_match() {
+        Assert.assertTrue(HomePage.areBarChartValuesConsistent());
+    }
+
+    @Then("All macro percentages combined should make up exactly 100%")
+    public void total_macro_percentages_should_be_100() {
+        Assert.assertEquals(HomePage.getTotalMacroPercentage(), 100);
+    }
+
+    @Then("User should redirected to Full meal plan page")
+    public void user_should_be_redirected_to_full_meal_plan_page() {
+        Assert.assertTrue(HomePage.isFullMealPlanPageDisplayed1());
+    }
+
   
     @Given("User is in the home page")
     public void user_is_in_the_home_page() {

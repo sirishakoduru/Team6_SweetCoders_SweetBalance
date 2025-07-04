@@ -25,7 +25,7 @@ public class Dashboardfeatures_Step {
 	boolean isredirected = false;
     //private String fullName = "Test User"; // You might want to get this from test data
    Dashboardfeatures_POM homePage = new Dashboardfeatures_POM();
-    @Given("User is in Home Page")
+    @Given("User  Home Page")
     public void user_is_in_home_page() {
         // Initialize WebDriver and navigate to home page
     	 DriverFactory.getDriver().get(homePage.auth_page);
@@ -231,8 +231,8 @@ public class Dashboardfeatures_Step {
     	System.out.println("user should see the heading");
     }
 
-    @Then("User should see the {string} button")
-    public void user_should_see_the_button(String string) {
+    @Then("User should {string} button")
+    public void user_should_button(String string) {
     	homePage.seestartbutton();
     	System.out.println("user should see the start button");
     }

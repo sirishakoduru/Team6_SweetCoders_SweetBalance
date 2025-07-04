@@ -74,3 +74,45 @@ Then Button color should change to yellow
 @tc34
 Scenario: Verify color change of button  not completed
 Then  Button color should change to red
+
+Scenario: Verify the sub title in flex card in each meal section
+Then:  User should see subtitle "Calorie"
+
+Scenario: Verify the total count of calories ( pre-meal & meal)
+Then: total calorie count should equal the sum of Pre-Meal and Meal calories
+
+Scenario: Verify each meal calorie detail on the right side
+Then: calorie detail for each meal should appear on the right side of its section
+
+Scenario:  Verify meal calorie detail matches pre-meal and main meal
+Then:  Calorie in fex card should match with meal 
+
+Scenario:  Verify that the donut chart is displayed
+Then  User should see donut chart
+
+Scenario: Verify color segments exist in donut chart
+Then   User should see distinct color segment in each macro
+
+Scenario:  Validate macro percentage distribution in donut chart
+Then   Macro percentages match expected values
+
+Scenario:  Verify macro segment colors match bar
+Then   User should see each segment color matches its corresponding label
+
+Scenario:   Verify that bar chart is visible
+Then   User should see macronutrient bar chart in each meal section 
+
+Scenario: Validate that each macro has a horizontal bar
+Then    User should see a visible progress bar for carbs, protein, fat, and fiber on the nutrient screen.
+
+Scenario: Verify bar chart values match the macro values
+Then   Each nutrient bar should show a value consistent with its label 
+
+Scenario:  Validate bar chart percentages add up to 100%
+Then  All macro percentages combined should make up exactly 100%
+
+Scenario:  Verify the navigation of View Full meal Plan
+Then  User should redirected to Full meal plan page
+
+
+

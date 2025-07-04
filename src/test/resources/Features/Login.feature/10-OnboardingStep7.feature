@@ -15,7 +15,7 @@ Then User should see options "Indian 🍛, American 🍔, Continental 🥖, Medi
 
 Scenario: Verify heading for step 7 is visible
 When User selects from the options in step six
-Then User should see title "What's your go-to food passport?"
+Then User should see title "What's your go-to food passport?"_1
 
 Scenario: Verify subtext for step 7 is visible 
 When User selects from the options in step six

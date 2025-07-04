@@ -1147,7 +1147,7 @@ public class LoginPage_Step {
 	    Assert.assertEquals(ExpextedOptions,actualOptions); 
 	}
 
-	@Then("User should see title {string}")
+	@Then("User should see title_1 {string}")
 	public void user_should_see_title(String string) {
 	    
 		String actualTitle = login.getStep7Title();
@@ -1314,8 +1314,8 @@ public class LoginPage_Step {
 	    login.clickSelectAllergyYesOption();
 	}
 
-	@Then("User should see the title {string}")
-	public void user_should_see_the_title(String string) {
+	@Then("User should see the title_1 {string}")
+	public void user_should_see_the_title_1(String string) {
 	    
 		String actualTitle = login.getStep9Title();
 	    Assert.assertEquals(actualTitle,string);
@@ -1634,6 +1634,217 @@ public class LoginPage_Step {
 		String StepsText = login.getprogessBarStepsText();
 	    Assert.assertEquals(StepsText,steps);
 	 
+	}
+	
+//----------------------------------------OnBoarding Step12-------------------------------------------------
+	
+	@When("User enters valid range of value in input field")
+	public void user_enters_valid_range_of_value_in_input_field() {
+	   
+	   login.enterHbValuePlaceholderText();
+	}
+
+	@Then("User should see input field accept the value")
+	public void user_should_see_input_field_accept_the_value() {
+	   
+		Assert.assertTrue("Input fiels is not disabled" , login.isHbValuePlaceholderTextEmpty());
+	}
+
+	@Given("User is on Step {int} of the onboarding process after entering a valid HbA1c value")
+	public void user_is_on_step_of_the_onboarding_process_after_entering_a_valid_hb_a1c_value(Integer int1) {
+	   
+	   login.enterHbValuePlaceholderValue();
+	}
+
+	@When("User clicks continue")
+	public void user_clicks_continue() {
+	   
+	   login.clickContinueButton();
+	}
+
+	@Then("User should see success message")
+	public void user_should_see_success_message() {
+	   
+		Assert.assertTrue("Succes message is not selected" , login.isSuccessMsgDisplayed());
+	}
+
+	@Then("User should see a loading indicator")
+	public void user_should_see_a_loading_indicator() {
+	   
+		Assert.assertTrue("loading indicator is not selected" , login.isLoadingIndicator());
+	}
+
+	@Then("User should see the message {string} success.")
+	public void user_should_see_the_message_success(String string) {
+	   
+		String actualText = login.getLoadingMessage();
+	    Assert.assertEquals(actualText,string);
+	}
+
+	@Then("User should see the subtext {string} on screen")
+	public void user_should_see_the_subtext_on_screen(String string) {
+	   
+	   
+	}
+
+	@Given("User is on loading personalised screen")
+	public void user_is_on_loading_personalised_screen() {
+	   
+	   System.out.println("User is personalised screen");
+	}
+
+	@When("User views the screen")
+	public void user_views_the_screen() {
+	   
+	   
+	}
+
+	@Then("User should be navigated to the {string} screen after loading personalised screen")
+	public void user_should_be_navigated_to_the_screen_after_loading_personalised_screen(String string) {
+	   
+		Assert.assertTrue("Premium button is not visible" , login.isPremiumButtonVisible());
+	}
+	
+//----------------------------------------Blood Report---------------------------------------------------------
+	
+	@Given("User is on the open Page")
+	public void user_is_on_the_open_page() {
+		login.getbaseurl();
+	}
+
+	@When("User clicks login button and fill the form")
+	public void user_clicks_login_button_and_fill_the_form() {
+	    login.clickLoginButton();
+	    login.enterEmailText();
+	    login.clickContinueWithEmail();
+	    login.enterFullNameText();
+	    login.enterUserNameText();
+	    login.enterPasswordText();
+	    login.clickTermsAndConditionsCheckbox();	    
+	}
+
+	@When("User clicks on {string} button")
+	public void user_clicks_on_button(String string) {
+	   login.clickCreateAccountButton();
+	}
+
+	@Then("User should navigate to blood report modal.")
+	public void user_should_navigate_to_blood_report_modal() {
+		Assert.assertTrue("User is not on blood report model" , login.isStepsBeforeUploadingVisible());
+	}
+	
+//-----------------------------------------Blood Report Uploading-------------------------------------------------------
+	
+	@Given("User is on onboarding page")
+	public void user_is_on_onboarding_page() {
+		login.clickLoginButton();
+	    login.enterEmailText();
+	    login.clickContinueWithEmail();
+	    login.enterFullNameText();
+	    login.enterUserNameText();
+	    login.enterPasswordText();
+	    login.clickTermsAndConditionsCheckbox();
+	    login.clickCreateAccountButton();
+	   
+	}
+
+	@When("User clicks upload blood report button")
+	public void user_clicks_upload_blood_report_button() {
+	    
+	   login.clickUploadBloodReport();
+	}
+
+	@Given("User is on blood report modal")
+	public void user_is_on_blood_report_modal() {
+	    
+		Assert.assertTrue("Blood Report Model Exists", login.isdrapAndDropTextVisible());
+	}
+
+	@When("User hovers over the upload box")
+	public void user_hovers_over_the_upload_box() {
+	    
+	   login.hoverOverUploadBox();
+	}
+
+	@Then("Upload box should show drag & drop interaction")
+	public void upload_box_should_show_drag_drop_interaction() throws InterruptedException {
+	    
+		Assert.assertEquals("rgb(125, 57, 236)", login.getDnDInteractionBorderColor());
+	}
+
+	@When("User tries to upload a non-PDF file")
+	public void user_tries_to_upload_a_non_pdf_file() {
+//	    login.clickDragAndDrop();
+	   login.uploadNonPdfBloodReport();
+	   login.clickUploadAndProcessButton();
+	}
+
+	@Then("User should see {string} error")
+	public void user_should_see_error(String steps) {
+	    
+		String StepsText = login.getErrorMessage();
+	    Assert.assertEquals(StepsText,steps);
+	}
+
+	@When("User uploads a PDF file over 10MB")
+	public void user_uploads_a_pdf_file_over_10mb() {
+	    
+	   
+	}
+
+	@When("User uploads valid PDF file")
+	public void user_uploads_valid_pdf_file() {
+//	    login.clickDragAndDrop();
+		login.uploadefile();
+	}
+
+	@Then("Upload should see processing percentage bar")
+	public void upload_should_see_processing_percentage_bar() {
+		login.clickUploadAndProcessButton();
+		Assert.assertTrue("Process bar is not visible" , login.isProgressBarVisible());
+	}
+
+	@Then("{string} button should be enabled after uploading")
+	public void button_should_be_enabled_after_uploading(String string) {
+		Assert.assertTrue("Upload and process button is not enables" , login.UploadAndProcessButtonEnabled());
+	   
+	}
+
+	@When("User clicks {string}")
+	public void user_clicks(String string) {
+	    
+	   login.clickCancelButton();
+	}
+
+	@Then("Modal should be closed and user returned to previous screen")
+	public void modal_should_be_closed_and_user_returned_to_previous_screen() {
+	    
+		Assert.assertTrue("Previous age is visible" , login.isStepsBeforeUploadingVisible());
+	}
+
+	@When("User clicks {string} after uploading valid file")
+	public void user_clicks_after_uploading_valid_file(String string) {
+		login.uploadefile();
+		login.clickUploadAndProcessButton();
+	}
+
+	@Then("User  should see Report analysis")
+	public void user_should_see_report_analysis() {
+		Assert.assertTrue("Report analysis is not visible" , login.isReportAnalysisVisible());
+	   
+	}
+
+	@Then("User  should see onboarding button")
+	public void user_should_see_onboarding_button() {
+//		login.uploadefile();
+//		login.clickUploadAndProcessButton();
+		Assert.assertTrue("Onboarding button is not visible" , login.isContinueOnboardingBUttonVisible());
+	}
+
+	@Then("User should see Blood Test Results,Complete Blood Count, Medical Conditions ,Abnormal Values, Recommendations")
+	public void user_should_see_blood_test_results_complete_blood_count_medical_conditions_abnormal_values_recommendations() {
+	    
+	   
 	}
 
 }

@@ -1,5 +1,7 @@
+@logbook_2
 Feature: Physical Activity Validation
   Background: User is in home page after logged in
+    Given User is logged in
 
   Scenario: Verify the presence of Physical activity section
     Given User is in Home page
@@ -9,7 +11,7 @@ Feature: Physical Activity Validation
   Scenario: Verify the title of physical activity section
     Given User is in Home page
     When User navigate to logbook page
-    Then User should see the title "Physical Activity"
+    Then User should see the title of "Physical Activity"
 
   Scenario: Verify the presence of icons beside title physical activity
     Given User is in Home page

@@ -34,8 +34,8 @@ public class Homepagefreeuser_Step {
 	 System.out.println("user is in home page");
    }
 
-    @When("User clicks meal section")
-    public void user_clicks_meal_section() {
+    @When("User clicks on meal section")
+    public void user_clicks_on_meal_section() {
 	homePage.heading();
    }
 
@@ -149,8 +149,8 @@ public class Homepagefreeuser_Step {
     	homePage.clickexercise();
     }
 
-    @Then("User should see title {string}")
-    public void user_should_see_title(String string) {
+    @Then("User should see title1 {string}")
+    public void user_should_see_title1(String string) {
         System.out.println("user should see title");
     }
     @Then("User should see {int} exercises listed for the day")

@@ -17,7 +17,7 @@ Feature: Physical activity Validation
     Then User should see dropdown for activity type
 
   Scenario: Verify the dropdown options for activity type
-    Then User should see "Walking,Running,Cycling,Weight Training,Yoga,HIIT,Other"
+    Then User should see dropdown "Walking,Running,Cycling,Weight Training,Yoga,HIIT,Other"
 
   Scenario: Verify the presence input for Duration
     Then User should see input field for duration

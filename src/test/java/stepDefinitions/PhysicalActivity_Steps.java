@@ -48,8 +48,8 @@ public void user_should_see_dropdown_for_activity_type() {
 	Assert.assertTrue(activityPage.isDropdownDisplayed());
 }
 
-@Then("User should see {string}")
-public void user_should_see(String optionsCsv) {
+@Then("User should see dropdown{string}")
+public void user_should_see_dropdown(String optionsCsv) {
     String[] expectedOptions = optionsCsv.split(",");
     boolean allPresent = activityPage.verifyDropdownOptions(expectedOptions) ||
                          activityPage.verifyDurationUnitOptions(expectedOptions);

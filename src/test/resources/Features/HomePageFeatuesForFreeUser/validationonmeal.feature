@@ -38,7 +38,7 @@
      @13
      Scenario: Verify the title in Exercise section
      When User clicks exercise section
-     Then  User should see title "Today's Exercise Plan"
+     Then  User should see title1 "Today's Exercise Plan"
      @14
      Scenario: Verify the presence of exercise list
      Then User should see 2 exercises listed for the day

@@ -3,7 +3,7 @@ Feature: Validation on meal section
 #    Given User is logged into the app
     
   Scenario: Verify each meal section is clickable to show details
-    Given User is in home page
+    Given User is on home page
     When User clicks on the "Breakfast" section
     Then Breakfast details become visible
     

@@ -81,7 +81,7 @@ Background:  User is in Home Page after logged in
    Then  User should see breathing cycle displays "pause" which last for 4 seconds
    @t36 
    Scenario: Verify stop button of breathing exercise
-   #When User clicks the Stop button during the breathing exercise
+   When User clicks the Stop button during the breathing exercise
    Then User should see breathing exercise stops
     
   

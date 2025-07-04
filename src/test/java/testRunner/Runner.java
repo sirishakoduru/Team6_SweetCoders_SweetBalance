@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @CucumberOptions(
 		//tags = "@Login_01",
-		features = {"src/test/resources/features/PremiumUserRecordData/FoodIntakeValidation.feature"},
+		features = {"src/test/resources/features"},
         publish = true,
         glue = {"stepDefinitions", "hooks"},
         plugin = {"pretty", "html:target/CucumberReports/CucumberReport.html",

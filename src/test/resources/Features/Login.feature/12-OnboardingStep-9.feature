@@ -19,7 +19,7 @@ Then User should see the back button in left down corner of the page
 
 Scenario: Verify title in step 9
 When User select option yes  in step 8
-Then User should see the title "Tap foods your body hates"
+Then User should see the title "Tap foods your body hates"_1
 
 Scenario: Verify subtext in step 9
 When User select option yes  in step 8

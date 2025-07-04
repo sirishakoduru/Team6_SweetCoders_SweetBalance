@@ -144,6 +144,13 @@ public class ConfigReader {
    	 else
    		 throw new RuntimeException("New Password not specified in the Config.properties file");
 	}
+	public static String bloodReportUrl() {
+		String bloodReportUrl=prop.getProperty("bllodReportUrl");
+   	 if (bloodReportUrl != null)
+		    return bloodReportUrl;
+   	 else
+   		 throw new RuntimeException("New Password not specified in the Config.properties file");
+	}
 
 	
 }

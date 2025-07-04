@@ -1,5 +1,6 @@
 package pageFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -37,6 +39,7 @@ public class Login_POM {
 	String onboardingUsername = ConfigReader.OnboardingUsername();
 	String onboardingPassword = ConfigReader.OnboardingPassword();
 	String onboardingUrl = ConfigReader.onboardingURL();
+	String uploadbloodReportUrl = ConfigReader.bloodReportUrl();
 	WebDriver driver = DriverFactory.getDriver();
 	WebDriverWait wait;
 	
@@ -136,6 +139,23 @@ public class Login_POM {
 	@FindBy(xpath = "//p[text()='Please enter a value between 4.0 and 15.0']") WebElement valueText;
 	@FindBy(xpath = "//input[@placeholder='Enter your HbA1c value (e.g., 7.0)']") WebElement hbValuePlaceholderText;
 	@FindBy(xpath = "//div[@class='mt-4 bg-white/50 backdrop-blur-sm rounded-lg p-4 shadow-inner']") WebElement hbDescriptionText;
+	@FindBy(xpath = "//div//div[1][contains(string(.),'Success') and contains(string(.),'HbA1c value 5% stored successfully')]") WebElement successMessage;
+	@FindBy(xpath = "//div[@class='absolute inset-0 rounded-full border-4 border-purple-200']") WebElement loadingIndicator;
+	@FindBy(xpath = "//p[text()='Getting you all set—like a VIP pass to better health!']") WebElement loadingMessage;
+	@FindBy(xpath = "//button[text()='Upgrade to Premium']") WebElement premiumButton;
+	@FindBy(xpath = "//button[text()='Upload Blood Report']") WebElement bloodReportButton;
+	@FindBy(xpath = "//div[contains(@class,'border-dashed')]") WebElement dragAndDrop;
+	//div[contains(@class,'border-dashed')]
+	@FindBy(xpath = "//input[@type='file']") WebElement pdfFileInput;
+	@FindBy(xpath = "//p[contains(text(),'Drag & drop or click to upload')]") WebElement dragAndDropText;
+	@FindBy(xpath = "//div[text()='Upload failed']") WebElement uploadErrorMessage;
+	@FindBy(xpath = "//button[text()='Upload & Process']") WebElement uploadAndProcessButton;
+	@FindBy(xpath = "//button[text()='Cancel']") WebElement cancelButton;
+	@FindBy(xpath= "//h1[text()='Drop a file, Dodge the boring steps!']") WebElement stepsBeforeUploading;
+	@FindBy(xpath = "//div[@data-state='indeterminate']") WebElement progressBar;
+	@FindBy(xpath = "//div[@role='progressbar']") WebElement progressBar2;
+	@FindBy(xpath = "//h2[text()='Report Analysis Results']") WebElement ReportAnalysis;
+	@FindBy(xpath = "//button[text()='Continue to Onboarding']") WebElement continueOnboardingBUtton;
 	
 	//button[.//span[contains(text(),'120')]]
 
@@ -344,7 +364,7 @@ public class Login_POM {
 	}
 	
 	public void clickUploadBloodReport() {
-		uploadBoodReport.click();
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", uploadBoodReport);
 	}
 	
 	public void clickStepsThroughOnboardingButton() {
@@ -1006,6 +1026,127 @@ public class Login_POM {
 		public boolean isContinueButtonVisible() {
 			return continueButton.isDisplayed();
 		}
+		public void enterHbValuePlaceholderText() {
+			hbValuePlaceholderText.sendKeys("2");
+			}
+		public boolean isHbValuePlaceholderTextEmpty() {
+			return !hbValuePlaceholderText.isEnabled();
+		}
+		public void enterHbValuePlaceholderValue() {
+			hbValuePlaceholderText.sendKeys("5");
+			}
+		public Boolean isSuccessMsgDisplayed() {
+		    wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // 30 seconds timeout
+		    WebElement alert = wait.until(ExpectedConditions.visibilityOf(successMessage));
+		    
+		    String actualMsg = alert.getText().replaceAll("\\s+", " ").trim();
+		    String expectedMsg = "Success HbA1c value 5% stored successfully".replaceAll("\\s+", " ").trim();
+
+		    System.out.println("Actual: " + actualMsg);
+		    System.out.println("Expected: " + expectedMsg);
+
+		    return actualMsg.contains(expectedMsg);
+		}
+		public String getLoadingMessage() {
+			return loadingMessage.getText();
+		}
+		public boolean isPremiumButtonVisible() {
+			return premiumButton.isDisplayed();
+		}
+		public boolean isLoadingIndicator() {
+			return loadingIndicator.isDisplayed();
+		}
+		public void enterEmailText() {
+			emailInput.sendKeys(generateEmail());
+		}
+		public void enterFullNameText() {
+			fullNameInput.sendKeys("Sweet-Nutri");
+		}
+		public void enterUserNameText() {
+			usernameInput.sendKeys(generateUsername());
+		}
+		public void enterPasswordText() {
+			passwordInput.sendKeys("SweetNutri");
+		}
+		public void hoverOverUploadBox() {
+			Actions actions = new Actions(driver);
+		    actions.moveToElement(dragAndDrop).perform();
+		}
+		public String getDnDInteractionBorderColor() throws InterruptedException {
+			Thread.sleep(1000);
+			String borderColor = dragAndDrop.getCssValue("border-color");
+			System.out.println("Border color on hover: " + borderColor);
+			return borderColor;
+			
+		}
+		public boolean isdrapAndDropTextVisible() {
+			return dragAndDropText.isDisplayed();
+		}
+//		public void uploadPdfBloodReport() {
+//		    String filePath = ConfigReader.getProperty("pdfPath");
+//		    
+//		    // Optional: If the input is hidden, make it visible via JS
+//		    if (!dragAndDrop.isDisplayed()) {
+//		        JavascriptExecutor js = (JavascriptExecutor) driver;
+//		        js.executeScript("arguments[0].style.display = 'block';", pdfFileInput);
+//		    }
+//
+//		    pdfFileInput.sendKeys(filePath);
+//		}
+		public void uploadefile() {
+			File file = new File(ConfigReader.getProperty("pdfPath"));
+			String pathfile = file.getAbsolutePath();
+//			String pathfile = System.getProperty("user.dir") + "\\Documents\\CBC-sample 1.pdf";
+			pdfFileInput.sendKeys(pathfile);
+		}
+		public boolean isProgressBarVisible() {
+			return progressBar.isDisplayed();
+		}
+		public boolean UploadAndProcessButtonEnabled() {
+			return uploadAndProcessButton.isEnabled();
+		}
+		public void clickCancelButton() {
+			cancelButton.click();
+		}
+		public boolean isStepsBeforeUploadingVisible() {
+			return stepsBeforeUploading.isDisplayed();
+		}
+		public void clickUploadAndProcessButton() {
+			uploadAndProcessButton.click();
+		}
+		public boolean isReportAnalysisVisible() {
+			return ReportAnalysis.isDisplayed();
+		}
+		public boolean isContinueOnboardingBUttonVisible() {
+			return continueOnboardingBUtton.isDisplayed();
+		}
+		public void getUploadBllodReportURL() {
+			driver.get(uploadbloodReportUrl);
+		}
+		public void uploadNonPdfBloodReport() {
+			File file = new File(ConfigReader.getProperty("excelFilePath"));
+		    String pathfile = file.getAbsolutePath();
+//			String pathfile = System.getProperty("user.dir") + "\\Documents\\CBC-sample 1.pdf";
+			pdfFileInput.sendKeys(pathfile);
+		}
+		public void uploadnonPdfefile() {
+			String pathfile = System.getProperty("user.dir") + "\\numpy ninja\\SweetBalanceTestData.xlsx";
+			pdfFileInput.sendKeys(pathfile);	
+		}
+		public String getErrorMessage() {
+			return uploadErrorMessage.getText();
+		}
+		public static String generateUsername() {
+		    return "Sweet" + System.currentTimeMillis();
+		}
+
+		public static String generateEmail() {
+		    return generateUsername() + "@testmail.com";
+		}
+		public void clickDragAndDrop() {
+			dragAndDrop.click();
+		}
+		
 	
 	
 

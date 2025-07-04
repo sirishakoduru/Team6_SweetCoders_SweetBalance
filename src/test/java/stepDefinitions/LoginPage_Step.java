@@ -1616,8 +1616,8 @@ public class LoginPage_Step {
 	    Assert.assertEquals(actualText,string);
 	}
 
-	@Then("User should see {string} button")
-	public void user_should_see_button(String string) {
+	@Then("User should see {string} Continuebutton")
+	public void user_should_see_Continuebutton(String string) {
 	  
 		Assert.assertTrue("Continue button is not selected" , login.isContinueButtonVisible());
 	}
@@ -1810,8 +1810,8 @@ public class LoginPage_Step {
 	   
 	}
 
-	@When("User clicks {string}")
-	public void user_clicks(String string) {
+	@When("User clicks cancelButton {string}")
+	public void user_clicks_cancelButton(String string) {
 	    
 	   login.clickCancelButton();
 	}

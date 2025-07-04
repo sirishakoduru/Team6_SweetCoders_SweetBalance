@@ -19,7 +19,7 @@ Then User should see the text "Please enter a value between 4.0 and 15.0" in Ste
 
 Scenario: Verify step 12 has continue button
 When User clicks option from the preferred intensity level
-Then User should see "Continue" button
+Then User should see "Continue" Continuebutton
 
 Scenario: Verify the description in step 12
 When User clicks option from the preferred intensity level

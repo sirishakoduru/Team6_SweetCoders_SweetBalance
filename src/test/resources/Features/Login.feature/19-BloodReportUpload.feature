@@ -26,7 +26,7 @@ When User uploads valid PDF file
 Then "Upload & Process" button should be enabled after uploading
 
 Scenario: Verify upload cancel button functionality
-When User clicks "Cancel"
+When User clicks cancelButton "Cancel"
 Then Modal should be closed and user returned to previous screen
 
 Scenario: Verify "Upload & Process" processes the file

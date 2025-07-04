@@ -12,8 +12,7 @@ import driver.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import utilities.ConfigReader;
-import utilities.LoggerLoad;
+import utilities.*;
 
 public class Hooks {
 	

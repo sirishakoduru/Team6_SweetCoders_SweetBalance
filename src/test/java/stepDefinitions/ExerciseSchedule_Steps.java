@@ -1,20 +1,18 @@
 package stepDefinitions;
 
-import java.time.Duration;
-
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driver.DriverFactory;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pageFactory.ExerciseModuleOn_POM;
 import pageFactory.ExerciseSchedule_POM;
 import pageFactory.Login_POM;
-import utilities.ConfigReader;
 import  utilities.CommonMethods;
+import utilities.ConfigReader;
 
 
 public class ExerciseSchedule_Steps {
@@ -69,6 +67,7 @@ public class ExerciseSchedule_Steps {
 			String actPageTitle = schedulePage.getExerciseURL();
 			Assert.assertEquals(expPageTitle, actPageTitle);
 	         }
+
 
 	    @Then("User should see titleText {string}")
 	    public void user_should_see_title_text(String titleText) {

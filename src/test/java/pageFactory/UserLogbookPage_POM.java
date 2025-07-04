@@ -31,22 +31,22 @@ public class UserLogbookPage_POM {
     @FindBy(xpath= "//h2[@class='text-2xl font-semibold mb-6']")
     private WebElement bloodGlucoseTracker;
     @FindBy(xpath= "//div[text()='Fasting']")
-    private WebElement fastingColor;
-    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]']")
+    private WebElement fastingTitleTextColor;
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]")
     private WebElement fastingGlucoseRange;
     @FindBy(xpath= "//div[text()='Pre-Meal']")
-    private WebElement preMealColor;
+    private WebElement preMealTitleTextColor;
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[2]")
     private WebElement preMealGlucoseRange;
     @FindBy(xpath= "//div[text()='Post-Meal']")
-    private WebElement postMealColor;
+    private WebElement postMealTitleTextColor;
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[2]")
     private WebElement postMealGlucoseRange;
     @FindBy(xpath= "//div[text()='Bedtime']")
-    private WebElement bedTimeColor;
+    private WebElement bedTimeTitleTextColor;
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[4]/div[2]")
     private WebElement bedTimeGlucoseRange;
-    @FindBy(xpath= "")
+    @FindBy(xpath= "//body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/*[name()='svg']/*[name()='g']/*[name()='g']")
     private List<WebElement> daysInXaxisInGlucoseTracker;
     @FindBy(xpath = "//*[name()='tspan' and text()='70']")
     private WebElement bloodGlucoseYaxisStart70;
@@ -86,10 +86,10 @@ public class UserLogbookPage_POM {
     private WebElement medicalDosageSection;
     @FindBy(xpath= "//*[contains(@class, 'lucide lucide-pill')]")
     private WebElement medicalDosageIcon;
-    @FindBy(xpath= "//h2[text()='/html[1]/body[1]/div[1]/div[1]/div[3]/div[2]/div[2]/div[1]/div[1]/*[name()='svg'][1]/*[name()='g'][3]/*[name()='text'][1]/*[name()='tspan'][1]']")
+    @FindBy(xpath= "//body[1]/div[1]/div[1]/div[3]/div[2]/div[2]/div[1]/div[1]/*[name()='svg']/*[name()='g']/*[name()='text']/*[name()='tspan']")
     private WebElement numberOfDosageTextInYaxis;
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[3]/div[2]/div[2]/div[1]")
-    private WebElement medicalDosageBarChart;
+    private List<WebElement> medicalDosageBarChart;
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[3]/div[2]/div[3]/div[1]/div[2]")
     private WebElement dosesInTotalScheduledDisplay;
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[3]/div[2]/div[3]/div[2]/div[2]")
@@ -100,13 +100,13 @@ public class UserLogbookPage_POM {
     private WebElement totalScheduledText;
     @FindBy(xpath= "//div[text() = 'Doses Taken']")
     private WebElement doseTakenText;
-    @FindBy(xpath= "//div[text() = 'Doses Missed']")
+    @FindBy(xpath= "//div[normalize-space()='Doses Missed']")
     private WebElement dosageMissedText;
 
     //Log review section
     @FindBy(xpath= "//h2[text()='Log Review']")
     private WebElement logReviewTitle;
-    @FindBy(xpath= "//tr[@class='bg-white/20']")
+    @FindBy(xpath= "//tr[@class='bg-white/20']/th")
     private List<WebElement> tableHeaders;
     @FindBy(xpath = "//tbody/tr/td[1]")
     private List<WebElement> dateColumnCells;
@@ -148,7 +148,11 @@ public class UserLogbookPage_POM {
     private WebElement peakDayValue;
 
     //Action methods
-    //Blood Glucose Tracker section
+    public void navigateToLogBookPage(){
+        logBookButton.click();
+    }
+
+//----------------------------------Blood Glucose Tracker section----------------------------------------------//
     public boolean isBloodGlucoseTrackerDisplayed() {
         return bloodGlucoseTracker.isDisplayed();
     }
@@ -156,60 +160,75 @@ public class UserLogbookPage_POM {
         return bloodGlucoseTracker.getText().trim();
     }
     public String verifyColorCodeForFasting() {
-        String fastingElementColor = fastingColor.getCssValue("color");
+        String fastingElementColor = fastingTitleTextColor.getCssValue("color");
         LoggerLoad.info("The color of the fasting label is: " + fastingElementColor);
         return fastingElementColor;
     }
 
-    public boolean verifyFastingRangeDisplayed() {
-        return fastingGlucoseRange.isDisplayed();
+    public String getFastingTitle(){
+        return fastingTitleTextColor.getText().trim();
+    }
+
+    public String verifyFastingRangeDisplayed() {
+        return fastingGlucoseRange.getText().trim();
     }
 
     public String verifyColorCodeForPreMeal() {
-        String preMealElementColor = preMealColor.getCssValue("color");
+        String preMealElementColor = preMealTitleTextColor.getCssValue("color");
         LoggerLoad.info("The color of the pre-meal label is: " + preMealElementColor);
         return preMealElementColor;
     }
-    public boolean verifyPreMealRangeDisplayed() {
-        return preMealGlucoseRange.isDisplayed();
+
+    public String getPreMealTitle(){
+        return preMealTitleTextColor.getText().trim();
+    }
+    public String verifyPreMealRangeDisplayed() {
+        return preMealGlucoseRange.getText().trim();
     }
 
     public String verifyColorCodeForPostMeal() {
-        String postMealElementColor = postMealColor.getCssValue("color");
+        String postMealElementColor = postMealTitleTextColor.getCssValue("color");
         LoggerLoad.info("The color of the post-meal label is: " + postMealElementColor);
         return postMealElementColor;
     }
-    public boolean verifyPostMealRangeDisplayed() {
-        return postMealGlucoseRange.isDisplayed();
+
+    public String getPostMealTitle(){
+        return postMealTitleTextColor.getText().trim();
+    }
+    public String verifyPostMealRangeDisplayed() {
+        return postMealGlucoseRange.getText().trim();
     }
 
     public String verifyColorCodeForBedtime() {
-        String bedtimeElementColor = bedTimeColor.getCssValue("color");
+        String bedtimeElementColor = bedTimeTitleTextColor.getCssValue("color");
         LoggerLoad.info("The color of the bed time label is: " + bedtimeElementColor);
         return bedtimeElementColor;
     }
-    public boolean verifyBedtimeRangeDisplayed() {
-        return bedTimeGlucoseRange.isDisplayed();
+
+    public String getBedTimeTitle(){
+        return bedTimeTitleTextColor.getText().trim();
+    }
+    public String verifyBedtimeRangeDisplayed() {
+        return bedTimeGlucoseRange.getText().trim();
     }
 
-    public List<String> getDaysFromXaxisInBloodGlucoseChart() {
-        List<String> days = new ArrayList<>();
-        for (WebElement day : daysInXaxisInGlucoseTracker) {
-            days.add(day.getText().trim());
-        }
-        return days;
+    public List<WebElement> getDaysFromXaxisInBloodGlucoseChart() {
+        return daysInXaxisInGlucoseTracker;
     }
 
-    public boolean verifyYaxisStartAt70InGlucoseChart() {
-        return bloodGlucoseYaxisStart70.isDisplayed();
+    public int verifyYaxisMinValueInGlucoseChart() {
+        String yMinText = bloodGlucoseYaxisStart70.getText().trim();
+        LoggerLoad.info("Y-axis minimum value: " + yMinText);
+        return Integer.parseInt(yMinText);
     }
 
-    public boolean verifyYaxisEndAt180InGlucoseChart() {
-        return bloodGlucoseYaxisEnds180.isDisplayed();
+    public int verifyYaxisMaxValueInGlucoseChart() {
+        String yMaxText = bloodGlucoseYaxisEnds180.getText().trim();
+        return Integer.parseInt(yMaxText);
     }
 
 
-    //Meal & Nutrition section
+//------------------------------------Meal & Nutrition section-----------------------------------------------//
     public boolean verifyMealNutritionSectionDisplayed() {
         return mealNutritionSection.isDisplayed();
     }
@@ -248,12 +267,8 @@ public class UserLogbookPage_POM {
         return fatsColorText;
     }
 
-    public List<String> getDaysFromXaxisInDailyNutritionChart() {
-        List<String> days = new ArrayList<>();
-        for (WebElement day : daysInXaxisInDailyNutrition) {
-            days.add(day.getText().trim());
-        }
-        return days;
+    public List<WebElement> getDaysFromXaxisInDailyNutritionChart() {
+        return  daysInXaxisInDailyNutrition;
     }
 
     public boolean verifyDailyNutritionEmptyBarChartDisplayed() {
@@ -270,16 +285,28 @@ public class UserLogbookPage_POM {
         return carbsCardValue.getText().trim();
     }
 
+    public boolean isCarbsCardValueDisplayed(){
+        return carbsCardValue.isDisplayed();
+    }
+
     public String getProteinCardValue() {
         return proteinCardValue.getText().trim();
+    }
+
+    public boolean isProteinCardValueDisplayed(){
+        return proteinCardValue.isDisplayed();
     }
 
     public String getFatsCardValue() {
         return fatsCardValue.getText().trim();
     }
 
+    public boolean isFatsCardValueDisplayed(){
+        return fatsCardValue.isDisplayed();
+    }
 
-    //Medical Dosage section
+
+//------------------------------------Medical Dosage section--------------------------------------------------//
     public boolean verifyMedicalDosageSectionDisplayed() {
         return medicalDosageSection.isDisplayed();
     }
@@ -297,7 +324,8 @@ public class UserLogbookPage_POM {
     }
 
     public boolean verifyMedicalDosageChartDisplayed() {
-        return medicalDosageBarChart.isDisplayed();
+        LoggerLoad.info("Checking if bars are present in Medical Dosage chart. Count: " + medicalDosageBarChart.size());
+        return medicalDosageBarChart.isEmpty();
     }
 
     public String getTotalScheduledDoseValue() {
@@ -329,42 +357,29 @@ public class UserLogbookPage_POM {
         LoggerLoad.info("The color of the dosageMissedTextColor text is: " + dosageMissedTextColor);
         return dosageMissedTextColor;
     }
+    public String verifyDosageMissedTextColor() {
+        String color = dosageMissedText.getCssValue("color");
+        LoggerLoad.info("✅ Fetched color: " + color);
+        return color;
+    }
 
 
-    //Log review section
-    public boolean verifyLogReviewTitleDisplayed() {
-        return logReviewTitle.isDisplayed();
+//----------------------------------------Log review section---------------------------------------------------//
+    public String verifyLogReviewTitleDisplayed() {
+        return logReviewTitle.getText().trim();
     }
 
     public List<String> getLogReviewHeaderTitles() {
         return tableHeaders.stream()
-                .map(e -> e.getText().trim())
+                .map(e -> e.getText().trim().replaceAll("\\s+", " "))
                 .collect(Collectors.toList());
     }
 
-//    public boolean verifyLast7DaysDatesDisplayed() {
-//        //Extracting displayed dates from page
-//        List<String> displayedDates = dateColumnCells.stream()
-//                .map(e -> e.getText().trim())
-//                .collect(Collectors.toList());
-//
-//        //Generating last 7 dates (including today)
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy");
-//        List<String> expectedDates =
-//                LocalDate.now()
-//                        .datesUntil(LocalDate.now().plusDays(1))  // include today only
-//                        .limit(7)
-//                        .map(date -> date.format(formatter))
-//                        .collect(Collectors.toList());
-//
-//        expectedDates = LocalDate.now()
-//                .minusDays(6)  // 6 days before today + today = 7 days
-//                .datesUntil(LocalDate.now().plusDays(1))
-//                .map(date -> date.format(formatter))
-//                .collect(Collectors.toList());
-//
-//        return displayedDates.equals(expectedDates);
-//    }
+    public List<String> getDateColumnTexts() {
+        return dateColumnCells.stream()
+                .map(e -> e.getText().trim())
+                .collect(Collectors.toList());
+    }
 
     public boolean verifyDatesInCorrectFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy", Locale.ENGLISH);
@@ -421,8 +436,14 @@ public class UserLogbookPage_POM {
     }
 
     public boolean verifyAnyBloodGlucoseValueLogged() {
-        return bloodGlucoseColumn.stream()
-                .anyMatch(e -> !e.getText().trim().equals("-"));
+        for (WebElement e : bloodGlucoseColumn) {
+            String text = e.getText().trim();
+            System.out.println("Blood Glucose cell value: '" + text + "'");
+            if (!text.equals("-") && !text.isEmpty()) {
+                return true;
+            }
+        }
+        return false;
     }
     public boolean verifyAnyNutrientValueLogged() {
         return nutritionColumn.stream()
@@ -437,7 +458,7 @@ public class UserLogbookPage_POM {
                 .anyMatch(e -> !e.getText().trim().equals("-"));
     }
 
-    //Physical Activity Validation
+ //---------------------------------------Physical Activity Validation------------------------------------------//
     public boolean verifyPhysicalActivitySectionDisplayed() {
         return physicalActivitySection.isDisplayed();
     }
@@ -496,12 +517,8 @@ public class UserLogbookPage_POM {
         return dailyAverageValue.getText();
     }
 
-    public boolean verifyPeakDayValueDisplayed() {
-        try {
-            return peakDayValue.isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+    public String verifyPeakDayValueDisplayed() {
+         return peakDayValue.getText().trim();
     }
 
     public boolean verifyActivityBarsDisplayedForLoggedDaysOnly() {

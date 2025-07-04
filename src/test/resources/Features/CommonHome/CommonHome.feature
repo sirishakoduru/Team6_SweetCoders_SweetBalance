@@ -1,9 +1,9 @@
 Feature: Validation for home page - Registered user
   Background: 
-    Given User is in password auth page
+    Given User is on password auth page
     
   Scenario: Verify App name after sign in
-    When User clicks sign in after entering password
+    When User click sign in after entering password
     Then User should see SweetBalance text on the left side of the page
     
   Scenario: Verify user name in home page
@@ -108,7 +108,7 @@ Feature: Validation for home page - Registered user
     
   Scenario: Verify title in flex container
     When User clicks sign in after entering password
-    Then User should see "Today's Meal Plan" title
+    Then User should see "Today's Meal Plan" title2
     
   Scenario: Verify "Today’s Meal Plan" section is visible
     When User clicks sign in after entering password

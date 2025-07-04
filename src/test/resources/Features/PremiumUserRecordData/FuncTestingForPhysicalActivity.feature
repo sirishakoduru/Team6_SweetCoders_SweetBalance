@@ -13,7 +13,7 @@ Feature: Functional testing for physical activity
 
   Scenario: Verify datepicker option
     When User clicks date picker
-    Then User should see date calendar
+    Then User should see date calendar icon
 
   Scenario: Verify date in picker
     When User clicks date picker

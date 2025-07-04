@@ -63,8 +63,9 @@ public class ExerciseModuleOn_Steps {
 		Assert.assertTrue(exercisePage.isViewFullScheduleDisplayed());
 	}
 
-	@When("User clicks the {string} button1")
-	public void user_clicks_the_button1(String string) {
+
+	@When("User clicks the {string} Schedulebutton")
+	public void user_clicks_the_Schedule_button(String string) {
 		exercisePage.clickViewFullScheduleButton();
 	}
 

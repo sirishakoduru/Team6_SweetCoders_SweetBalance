@@ -68,8 +68,9 @@ public class ExerciseSchedule_Steps {
 			Assert.assertEquals(expPageTitle, actPageTitle);
 	         }
 
-	    @Then("User should see title9 {string}")
-	    public void user_should_see_title9(String titleText) {
+
+	    @Then("User should see titleText {string}")
+	    public void user_should_see_title_text(String titleText) {
 	        Assert.assertTrue("Schedule title not visible", schedulePage.isTitleDisplayed());
 	    }
 

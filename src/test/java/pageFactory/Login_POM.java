@@ -426,14 +426,13 @@ public class Login_POM {
 	
 
 	  public void performLogin() {
-		  clickLoginButton();
+		  	clickLoginButton();
 	        enterEmail();
 	        clickContinueWithEmail();
 	        enterPassword();
 	        clickSigninButton();
 	    }
 	
-
 	public void clickOptionInStep1() {
 		option2OfSugarRebellion.click();
 	}

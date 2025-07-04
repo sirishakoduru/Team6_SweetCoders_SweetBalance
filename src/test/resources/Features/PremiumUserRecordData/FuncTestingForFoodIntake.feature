@@ -46,16 +46,16 @@ Feature: Food Intake Tracker Functional Testing
 
   Scenario: Verify datepicker option
     When User clicks on date field
-    Then User should see date calendar
+    Then User should see date calendar icon
 
   Scenario: Verify date in picker
-    Then User should see today's date highlighted
+    Then User should see todays date highlighted
 
   Scenario: Verify the presence the previous button in date picker
-    Then User should see previous button in date
+    Then User should see previous button in datepicker
 
   Scenario: Verify the presence the Next button in date picker
-    Then User should see next button in date
+    Then User should see next button in datepicker
 
   Scenario: Verify user able to edit date in date picker
     When User selects previous date in the calendar after clicking date field

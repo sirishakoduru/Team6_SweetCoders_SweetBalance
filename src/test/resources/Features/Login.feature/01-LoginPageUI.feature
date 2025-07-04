@@ -10,7 +10,7 @@ Then User should see "Welcome back" heading
 Scenario: Verify sub text of the header
 Given User is on SweetBalance homepage
 When User clicks on "Login" link
-Then User should see "Sign in to your account or create a new one"
+Then User should see account "Sign in to your account or create a new one"
 
 @LoginUI_03
 Scenario: Verify presence of close button

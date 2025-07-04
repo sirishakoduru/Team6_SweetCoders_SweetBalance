@@ -5,7 +5,7 @@ Feature: Functional testing for track glucose
 
   Scenario: Verify user able to record reading
     When User clicks record reading after valid reading
-    Then User should see "Reading successfully recorded!"
+    Then User should see the message "Reading successfully recorded!"
 
   Scenario: Verify user unable to enter invalid value
     When User enters invalid value in blood glucose
@@ -16,17 +16,17 @@ Feature: Functional testing for track glucose
     Then User should see transition details highlights
 
   Scenario: Verify datepicker option
-    When User clicks date picker
+    When User clicks date picker button
     Then User should see date calendar
 
   Scenario: Verify date in picker
     When User clicks date picker
-    Then User should see today's date highlighted
+    Then User should see today date highlighted
 
   Scenario: Verify the presence the previous button in date picker
     When User clicks date picker
-    Then User should see previous button in date
+    Then User should see previous button in date for glucose
 
   Scenario: Verify the presence the Next button in date picker
     When User clicks date picker
-    Then User should see next button in date
+    Then User should see next button in date for glucose

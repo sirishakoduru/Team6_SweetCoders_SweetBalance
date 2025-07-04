@@ -344,6 +344,14 @@ public class Login_POM {
 	    }
 	}
 	
+	  public void performLogin() {
+		  clickLoginButton();
+	        enterEmail();
+	        clickContinueWithEmail();
+	        enterPassword();
+	        clickSigninButton();
+	    }
+	
 	
 
 	

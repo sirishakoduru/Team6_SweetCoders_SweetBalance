@@ -13,6 +13,7 @@ public class CommonMethods {
 
 	public static final int DEFAULT_TIMEOUT = 10;
 
+
 	public static void waitForElementVisibilityOf(WebElement locator) {
 		try {
 			WebDriver driver = DriverFactory.getDriver();

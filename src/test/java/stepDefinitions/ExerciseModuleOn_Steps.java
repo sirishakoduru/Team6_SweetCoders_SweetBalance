@@ -30,11 +30,7 @@ public class ExerciseModuleOn_Steps {
 		// Assuming a method to login already inside DriverFactory or another helper
 		// For simplicity, if no login required, this step may be empty or check
 		// homepage presence
-//		login.getloginurl();
-//		login.enterEmail();
-//		login.clickContinueWithEmail();
-//		login.enterPassword();
-//		login.clickSigninButton();
+
 		login.performLogin();
 	}
 
@@ -42,8 +38,7 @@ public class ExerciseModuleOn_Steps {
 	public void user_is_on_the_homepage() {
 //		WebElement currentStatus = exercisePage.getCurrentStatusHeader();
 //		common.waitForElementVisibilityOf(currentStatus);
-//		
-		
+	
 		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
 
 		// Wait for correct URL
@@ -51,9 +46,7 @@ public class ExerciseModuleOn_Steps {
 		String expectedHomeUrl = ConfigReader.homeUrl();
 		String actualUrl = webDriver.getCurrentUrl();
 		Assert.assertEquals("User is not on the expected homepage", expectedHomeUrl, actualUrl);
-		
-		
-	}
+		}
 
 	@When("User clicks the {string} option from the side panel")
 	public void user_clicks_the_option_from_the_side_panel(String string) {

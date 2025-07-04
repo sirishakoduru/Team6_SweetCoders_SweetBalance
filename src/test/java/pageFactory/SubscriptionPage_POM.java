@@ -58,33 +58,43 @@ public class SubscriptionPage_POM {
 		dashboardBttn.click();
 	}
 	public void clickpremiumBttn() {
+		CommonMethods.waitForElementTobeClick(premiumBttn);
 		premiumBttn.click();
 	}
 	public String getDailyFreeMark() {
+		CommonMethods.waitForElementVisibilityOf(dailyMealFeature);
 	    return dailyMealFeature.findElements(By.tagName("td")).get(1).getText().trim();
 	}
 	public String getDailyPremiumMark() {
+		CommonMethods.waitForElementVisibilityOf(dailyMealFeature);
 	    return dailyMealFeature.findElements(By.tagName("td")).get(2).getText().trim();
 	}
 	public String getWeeklyFreeMark() {
+		CommonMethods.waitForElementVisibilityOf(weeklyMealFeature);
 	    return weeklyMealFeature.findElements(By.tagName("td")).get(1).getText().trim();
 	}
 	public String getWeeklyPremiumMark() {
+		CommonMethods.waitForElementVisibilityOf(weeklyMealFeature);
 	    return weeklyMealFeature.findElements(By.tagName("td")).get(2).getText().trim();
 	}
 	public String getexcercisePlanFreeMark() {
+		CommonMethods.waitForElementVisibilityOf(excercisePlan);
 	    return excercisePlan.findElements(By.tagName("td")).get(1).getText().trim();
 	}
 	public String getexcercisePlanPremiumMark() {
+		CommonMethods.waitForElementVisibilityOf(excercisePlan);
 	    return excercisePlan.findElements(By.tagName("td")).get(2).getText().trim();
 	}
 	public String gettendayPlanFreeMark() {
+		CommonMethods.waitForElementVisibilityOf(tendayPlan);
 	    return tendayPlan.findElements(By.tagName("td")).get(1).getText().trim();
 	}
 	public String gettendayPlanPremiumMark() {
+		CommonMethods.waitForElementVisibilityOf(tendayPlan);
 	    return tendayPlan.findElements(By.tagName("td")).get(2).getText().trim();
 	}
 	public String getthirtyDayPlanFreeMark() {
+		CommonMethods.waitForElementVisibilityOf(thirtyDayPlan);
 	    return thirtyDayPlan.findElements(By.tagName("td")).get(1).getText().trim();
 	}
 	public String getthirtyDayPlanPremiumMark() {
@@ -115,6 +125,7 @@ public class SubscriptionPage_POM {
 	    return raminderTasks.findElements(By.tagName("td")).get(2).getText().trim();
 	}
 	public boolean iscontinueFreeBttnDisplayed() {
+		CommonMethods.waitForElementTobeClick(continueFreeBttn);
 		return continueFreeBttn.isDisplayed();
 	}
 	public boolean isupgradPremiumBttnDisplayed() {

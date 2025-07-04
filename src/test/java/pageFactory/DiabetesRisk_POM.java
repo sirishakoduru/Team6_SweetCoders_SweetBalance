@@ -44,6 +44,7 @@ public class DiabetesRisk_POM {
 		return driver.getCurrentUrl();
 	}
 	public void clickCheckRiskRttn() {
+		CommonMethods.waitForElementVisibilityOf(checkRiskBttn);
 		checkRiskBttn.click();
 	}	
 	public boolean isdiabetesPopUpDisplayed() {
@@ -116,39 +117,51 @@ public class DiabetesRisk_POM {
 		weightInput.sendKeys(String.valueOf(randomAge));
 	}
 	public void clickphysicalActivity() {
+		CommonMethods.waitForElementTobeClick(physicalActivity);
 		physicalActivity.click();
 	}
 	public void clickactivePA() {
+		CommonMethods.waitForElementTobeClick(activePA);
 		activePA.click();
 	}
 	public void clickmoderatePA() {
+		CommonMethods.waitForElementTobeClick(moderatePA);
 		moderatePA.click();
 	}
 	public void clicksedentaryPA() {
+		CommonMethods.waitForElementTobeClick(sedentaryPA);
 		sedentaryPA.click();
 	}
 	public void clicknormalBP() {
+		CommonMethods.waitForElementTobeClick(normalBP);
 		normalBP.click();
 	}
 	public void clickelevatedBP() {
+		CommonMethods.waitForElementTobeClick(elevatedBP);
 		elevatedBP.click();
 	}
 	public void clickhighBP() {
+		CommonMethods.waitForElementTobeClick(highBP);
 		highBP.click();
 	}
 	public void clickexcellentDQ() {
+		CommonMethods.waitForElementTobeClick(excellentDQ);
 		excellentDQ.click();
 	}
 	public void clickaverageDQ() {
+		CommonMethods.waitForElementTobeClick(averageDQ);
 		averageDQ.click();
 	}
 	public void clickpoorDQ() {
+		CommonMethods.waitForElementTobeClick(poorDQ);
 		poorDQ.click();
 	}
 	public void clickcalculateRiskBttn() {
+		CommonMethods.waitForElementTobeClick(calculateRiskBttn);
 		calculateRiskBttn.click();
 	}
 	public boolean isassessmentPopUpDisplayed() {
+		CommonMethods.waitForElementVisibilityOf(assessmentPopUp);
 		return assessmentPopUp.isDisplayed();
 	}
 }

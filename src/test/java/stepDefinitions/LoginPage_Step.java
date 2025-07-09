@@ -1846,5 +1846,341 @@ public class LoginPage_Step {
 	    
 	   
 	}
+	
+//-----------------------------------Upload BloodReport Step1------------------------------------------------------------
+	
+	@Given("User is on uploading page and clicks upload blood report")
+	public void user_is_on_uploading_page_and_clicks_upload_blood_report() {
+	   
+		login.clickLoginButton();
+	    login.enterEmailText();
+	    login.clickContinueWithEmail();
+	    login.enterFullNameText();
+	    login.enterUserNameText();
+	    login.enterPasswordText();
+	    login.clickTermsAndConditionsCheckbox();
+	    login.clickCreateAccountButton();
+	    login.clickUploadBloodReport();
+	    login.uploadefile();
+	    login.clickUploadAndProcessButton();
+	}
+
+
+	@Given("User is on report analysis")
+	public void user_is_on_report_analysis() {
+	   
+		Assert.assertTrue("Report analysis is not visible" , login.isReportAnalysisVisible());
+	}
+	
+	@When("User clicks continue onboarding button")
+	public void user_clicks_continue_onboarding_button() {
+	   
+	    login.clickContinueOnboardingBUtton();
+	}
+
+	@Then("User should see text field for Age, height , weight")
+	public void user_should_see_text_field_for_age_height_weight() {
+	   
+		Assert.assertTrue("Age input is not visible" , login.isAgeInputVisible());
+		Assert.assertTrue("Height input is not visible" , login.isHeightVisible());
+		Assert.assertTrue("Weight input is not visible" , login.isWeightInputVisible());
+	}
+
+	@Then("User should dropdown option for Gender field")
+	public void user_should_dropdown_option_for_gender_field() {
+	   
+		Assert.assertTrue("Gender Dropdown is not visible" , login.isGenderDropdownVisible());
+	}
+
+	@Then("User should see {string} options in dropdown")
+	public void user_should_see_options_in_dropdown(String string) {
+	   
+		List<String> actualOptions = login.getDropdownGenderOptions();
+		List<String> expectedOptions = Arrays.asList("Male", "Female", "Prefer Not to Say");
+	    Assert.assertEquals(expectedOptions,actualOptions);
+	}
+
+	@Then("User should see enabled {string} button")
+	public void user_should_see_enabled_button(String string) {
+	   
+		Assert.assertTrue("Continue button is enabled" , login.isUploadContinueButtonEnabled());
+	}
+	
+	@When("User clicks continue after entering valid values of height and weight")
+	public void user_clicks_continue_after_entering_valid_values_of_height_and_weight() throws InterruptedException {
+		login.clickContinueOnboardingBUtton();
+		login.enterHeightInput();
+		login.enterWeight();
+		login.clickuploadContinueButton();
+	}
+
+	@Then("User should move to step {int}")
+	public void user_should_move_to_step(Integer int1) {
+	   
+		Assert.assertTrue("Step2 is not visible" , login.isblooddreportStep2Visible());
+	}
+	
+	@When("User clicks continue after entering invalid height and weight values.")
+	public void user_clicks_continue_after_entering_invalid_height_and_weight_values() {
+		login.clickContinueOnboardingBUtton();
+		login.enterInvalidHeightInput();
+		login.enterInvalidWeight();
+		login.clickuploadContinueButton();
+		
+	}
+
+	@Then("User should receive error message if form have invalid values")
+	public void user_should_receive_error_message_if_form_have_invalid_values() {
+	   
+		Assert.assertFalse("Error message is not displayed" , login.isUploadInputErrorMessage());
+	}
+
+	@Then("Progress bar should be visible")
+	public void progress_bar_should_be_visible() {
+	   
+		Assert.assertTrue("Progress bar is not visible" , login.isUploadProgressBarVisible()); 
+	}
+
+	@Then("Progress text should read Step {int} of {int}")
+	public void progress_text_should_read_step_of(Integer int1, Integer int2) {
+	   
+		String StepsText = login.getprogresstext();
+	    Assert.assertEquals(StepsText,"Step 1 of 5");
+	}
+	
+	@Then("Step {int} indicator of uploading should be highlighted")
+	public void step_indicator_of_uploading_should_be_highlighted(Integer int1) {
+	    
+		Assert.assertTrue("Step1 indicator is not highlighted" , login.isUploadProgressBarVisible());
+	}
+
+
+	@Then("Steps {int} to {int} should remain unhighlighted\\/inactive")
+	public void steps_to_should_remain_unhighlighted_inactive(Integer int1, Integer int2) throws InterruptedException {
+	   
+		Assert.assertEquals("20%", login.getHighlightedWidth());
+	}
+	
+//---------------------------------------------Upload BloodReport Step2------------------------------------------------------
+	
+	@Given("User is in step {int} for onboarding process")
+	public void user_is_in_step_for_onboarding_process(Integer int1) {
+	    
+	   System.out.println("User is on step1 of onboarding process");
+	}
+
+	@When("User clicks continue after filling form")
+	public void user_clicks_continue_after_filling_form() throws InterruptedException {
+	    
+		login.enterHeightInput();
+		login.enterWeight();
+		login.clickuploadContinueButton();
+	}
+
+	@Then("Page should display title: {string} of blood report step2")
+	public void page_should_display_title_of_blood_report_step2(String string) {
+		String actualTitle = login.getblooddreportStep2Text();
+	    Assert.assertEquals(actualTitle,string);
+	}
+
+	@Then("Page should show text: {string}")
+	public void page_should_show_text(String string) {
+	    
+		String actualTitle = login.getblooddreportStep2Subtext();
+	    Assert.assertEquals(actualTitle,string);
+	}
+
+	@Then("Back button should be visible for blood report steps")
+	public void back_button_should_be_visible_for_blood_report_steps() {
+	    
+		Assert.assertTrue("Back button is not visible", login.isBloodreportBackButtonVisible());
+	}
+
+	@Then("Progress bar should reflect {string} as filled")
+	public void progress_bar_should_reflect_as_filled(String string) {
+	    
+		String StepsText = login.getprogresstext();
+	    Assert.assertEquals(StepsText,"Step 2 of 5");
+	}
+
+	@Then("User should see options {string}")
+	public void user_should_see_options(String string) {
+	    
+		List<String> actualOptions = login.getExeciseLevelOptions();
+		List<String> expectedOptions = Arrays.asList("Easy 🦋", "Medium 💪", "Hard 🔥");
+	    Assert.assertEquals(expectedOptions,actualOptions);
+	}
+
+//----------------------------------------------Upload BloodReport Step3----------------------------------------
+	
+	@Given("User is in Step two for onboarding process")
+	public void user_is_in_step_two_for_onboarding_process() throws InterruptedException {
+	    
+		login.enterHeightInput();
+		login.enterWeight();
+		login.clickuploadContinueButton();
+	}
+
+	@When("User selects one option from intensity")
+	public void user_selects_one_option_from_intensity() {
+	    
+	   login.clickBloodreportExcerciseLevel();
+	}
+
+	@Then("User should move to step three")
+	public void user_should_move_to_step_three() {
+	    
+		Assert.assertTrue("User is not on step3", login.isblooddreportStep3Visible());
+	}
+
+	@When("User clicks back button")
+	public void user_clicks_back_button() {
+	    
+	   login.clickBloodreportBackButton();
+	}
+
+	@Then("User Should navigate back to Step one")
+	public void user_should_navigate_back_to_step_one() {
+	    
+		Assert.assertTrue("User is not on step3", login.isblooddreportStep1Visible());
+	}
+
+	@Then("Page should display title {string} of blood report step two")
+	public void page_should_display_title_of_blood_report_step_two(String string) {
+	    
+		String actualTitle = login.getblooddreportStep3Text();
+	    Assert.assertEquals(actualTitle,string);
+	}
+
+	@Then("Page should have sub text Select your dietary preference")
+	public void page_should_have_sub_text_select_your_dietary_preference() {
+	    
+		String actualTitle = login.getblooddreportStep3Subtext();
+		String expected = "Select your dietary preference";
+	    Assert.assertEquals(actualTitle,expected);
+	}
+
+	@Then("Progress bar should visually indicate {string} of blood report step3")
+	public void progress_bar_should_visually_indicate_of_blood_report_step3(String string) {
+	    
+		String StepsText = login.getprogresstext();
+	    Assert.assertEquals(string,StepsText);
+	}
+
+	@Then("User should see an option labeled  {string} of step three")
+	public void user_should_see_an_option_labeled_of_step_three(String string) {
+		List<String> actualOptions = login.getBloodReportTasteBudsOptions();
+		List<String> expectedOptions = Arrays.asList("All-inclusive diet 🍴🍖🍎", "Vegetarian 🥗🍆🥕", "Vegan 🥬🌱🌿");
+	    Assert.assertEquals(expectedOptions,actualOptions);
+	   
+	}
+	@Then("Back button should be visible for steps")
+	public void back_button_should_be_visible_for_steps() {
+	    Assert.assertTrue("Back button is not visible on step two", login.isBloodreportBackButtonVisible());
+	}
+	
+//----------------------------------------------------upload bloodReport Step4-------------------------------------------------------------
+	
+	@Given("User is in step three")
+	public void user_is_in_step_three() throws InterruptedException {
+	    
+		login.enterHeightInput();
+		login.enterWeight();
+		login.clickuploadContinueButton();
+		login.clickBloodreportExcerciseLevel();
+	}
+
+	@When("User selects dietary preference")
+	public void user_selects_dietary_preference() {
+	    
+		login.clickSelectBloodReportTastebud();
+	}
+
+	@Then("User should navitae to step four")
+	public void user_should_navitae_to_step_four() {
+	    
+		Assert.assertTrue("User is not on step4", login.isblooddreportStep4Visible()); 
+	}
+
+	@Then("User should navigate to step two")
+	public void user_should_navigate_to_step_two() {
+	    
+		Assert.assertTrue("User is not on step2", login.isblooddreportStep2Visible());
+	}
+
+	@Then("Page should display title {string} of blood report step four")
+	public void page_should_display_title_of_blood_report_step_four(String expectedTitle) {
+	    
+		String actualTitle = login.getblooddreportStep4Text();
+//		String expected = "What's' your go-to food passport?";
+	    Assert.assertEquals(actualTitle,expectedTitle);
+	}
+
+	@Then("User should see sub text {string} of step four")
+	public void user_should_see_sub_text_of_step_four(String string) {
+	    
+		String actualTitle = login.getblooddreportStep4Subtext();
+	    Assert.assertEquals(actualTitle,string);
+	}
+
+	@Then("Progress bar should visually indicate {string} of step four")
+	public void progress_bar_should_visually_indicate_of_step_four(String string) {
+	    
+		String StepsText = login.getprogresstext();
+	    Assert.assertEquals(string,StepsText);
+	}
+
+	@Then("User should see options labeled {string}")
+	public void user_should_see_options_labeled(String string) {
+		List<String> actualOptions = login.getbloodReportFoodOptions();
+		List<String> expectedOptions = Arrays.asList("Indian 🍛, American 🍔, Continental 🥖, Mediterranean 🥙, Asian 🍜, Middle Eastern 🥙, Mexican 🌮");
+	    Assert.assertEquals(expectedOptions,actualOptions);
+	    
+	}
+	
+//--------------------------------------------------------Upload Blood report Step5-------------------------------------------------------------------------
+	
+	@Given("User is in step five of uploading blood report")
+	public void user_is_in_step_five_of_uploading_blood_report() throws InterruptedException {
+	    
+		login.enterHeightInput();
+		login.enterWeight();
+		login.clickuploadContinueButton();
+		login.clickBloodreportExcerciseLevel();
+		login.clickSelectBloodReportTastebud();
+	}
+
+	@Then("User should navigate to step four")
+	public void user_should_navigate_to_step_four() {
+	    
+		Assert.assertTrue("User is not on step4", login.isblooddreportStep4Visible());
+	}
+
+	@When("User selects single allergy and clicks submit")
+	public void user_selects_single_allergy_and_clicks_submit() {
+	    login.ClickSelectBloodReportFood();
+	    login.clickSelectBloodreportAllergyFood();
+	    login.clickSubmitButton();
+	}
+
+	@Then("User should navigate to subscription details")
+	public void user_should_navigate_to_subscription_details() {
+	    
+		Assert.assertTrue("User is not on subscription details page", login.isAccountUpgradeVisible()); 
+	}
+
+	@When("User selects multiple allergies and clicks submit")
+	public void user_selects_multiple_allergies_and_clicks_submit() {
+		login.ClickSelectBloodReportFood();
+	    login.clickSelectDairyAllery();
+	    login.clickSelectNutsAllery();
+	    login.clickSubmitButton();
+	}
+
+	@Then("User should navigate to {string} after submitting form")
+	public void user_should_navigate_to_after_submitting_form(String string) {
+	    
+		Assert.assertTrue("User is not on subscription details page", login.isAccountUpgradeVisible());
+	}
 
 }

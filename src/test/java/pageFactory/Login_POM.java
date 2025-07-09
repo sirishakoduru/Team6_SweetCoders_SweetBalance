@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 import org.apache.poi.ddf.EscherColorRef.SysIndexSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -22,6 +23,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driver.DriverFactory;
+import junit.framework.Assert;
 import utilities.ConfigReader;
 import utilities.ExcelReader;
 
@@ -154,8 +156,41 @@ public class Login_POM {
 	@FindBy(xpath= "//h1[text()='Drop a file, Dodge the boring steps!']") WebElement stepsBeforeUploading;
 	@FindBy(xpath = "//div[@data-state='indeterminate']") WebElement progressBar;
 	@FindBy(xpath = "//div[@role='progressbar']") WebElement progressBar2;
-	@FindBy(xpath = "//h2[text()='Report Analysis Results']") WebElement ReportAnalysis;
+	@FindBy(xpath = "//div//h2[text()='Report Analysis Results']") WebElement ReportAnalysis;
 	@FindBy(xpath = "//button[text()='Continue to Onboarding']") WebElement continueOnboardingBUtton;
+	@FindBy(xpath = "//input[@name='age']") WebElement ageInput;
+	@FindBy(xpath = "//input[@name='height']") WebElement heightInput;
+	@FindBy(xpath = "//input[@name='weight']") WebElement weightInput;
+	@FindBy(xpath = "//select//option[contains(text(),'Select Gender')") WebElement genderDropdown;
+	@FindBy(xpath = "//select//option[contains(text(),'Male') or contains(text(),'Female') or contains(text(),'Prefer Not to Say')]") List<WebElement> DropdownGenderOptions;
+	@FindBy(xpath = "//button[text()='Continue']") WebElement uploadContinueButton;
+	@FindBy(xpath = "//div[@class='space-y-1'][4]") WebElement uploadInputErrorMessage;
+	@FindBy(xpath = "//div[@class='w-full bg-purple-200/50 h-3 rounded-full']") WebElement uploadProgressBar;
+	@FindBy(xpath = "//p[@class='text-xs text-purple-700 font-medium']") WebElement progresstext;
+	@FindBy(xpath = "//div[contains(@class, 'bg-purple-600')]") WebElement step1Highlighted;
+	@FindBy(xpath = "//h2[text()='Help Us Help You (We Promise, No Long Forms!)']") WebElement bloodreportStep1;
+	@FindBy(xpath = "//h2[text()='Pick your pace: chill stroll or marathon magic']") WebElement blooddreportStep2;
+	@FindBy(xpath = "//p[text()='Select your preferred exercise intensity level']") WebElement blooddreportStep2Subtext;
+	@FindBy(xpath = "//button[text()=' Back']") WebElement bloodreportBackButton;
+	@FindBy(xpath = "//div//span[contains(text(),'Medium')]") WebElement bloodreportExcerciseLevel;
+	@FindBy(xpath = "//h2[text()='Your taste buds—what team are they on?']") WebElement bloodreportStep3;
+	@FindBy(xpath = "//p[text()='Select your dietary preference']") WebElement bloodreportStep3Subtext;
+	@FindBy(xpath = "//div//span[contains(text(),'All-inclusive diet') or contains(text(),'Vegetarian ') or contains(text(),'Vegan')]") List<WebElement> bloodreportTateBudOptions;
+	@FindBy(xpath = "//div//span[text()='All-inclusive diet 🍴🍖🍎']") WebElement selectBloodReportTastebud;
+	@FindBy(xpath = "//h2[@class='text-2xl font-semibold text-center mb-1 text-purple-700']") WebElement bloodreportStep4;
+	@FindBy(xpath = "//p[@class='text-center text-sm text-purple-600 mb-6']") WebElement bloodreportStep4Subtext;
+	@FindBy(xpath = "//div[@class='flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-purple-300 cursor-pointer']") List<WebElement>bloodReportFoodOptions;
+	@FindBy(xpath = "//div[@class='flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-purple-300 cursor-pointer'][1]") WebElement selectBloodReportFood;
+	@FindBy(xpath = "//h2[text()='Allergic to any foods?']") WebElement bloodreportStep5;
+	@FindBy(xpath = "//p[text()='Select all that apply']") WebElement bloodreportStep5Subtext;
+	@FindBy(xpath = "//div[@class='flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-purple-300 cursor-pointer']") List<WebElement> bloodreportAllergyOptions;
+	@FindBy(xpath = "//div[span[text()='None']]//input[@name='foodAllergy']") WebElement selectBloodreportAllergyFood;
+	@FindBy(xpath = "//div[span[text()='Dairy 🐄🥛']]//input[@name='foodAllergy']") WebElement selectDairyAllery;
+	@FindBy(xpath = "//div[span[text()='Nuts 🌰🥜']]//input[@name='foodAllergy']") WebElement selectNutsAllery;
+	@FindBy(xpath = "//button[text()='Submit']") WebElement submitButton;
+	@FindBy(xpath = "//h1[text()='Free vs. Premium Account Features']") WebElement accountUpgrade;
+	
+	
 	
 	//button[.//span[contains(text(),'120')]]
 
@@ -1157,6 +1192,173 @@ public class Login_POM {
 			dragAndDrop.click();
 		}
 		
+		public void clickContinueOnboardingBUtton() {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", continueOnboardingBUtton);
+		}
+		
+		public boolean isAgeInputVisible() {
+			return ageInput.isDisplayed();
+		}
+		public boolean isHeightVisible() {
+			return heightInput.isDisplayed();
+		}
+		public boolean isWeightInputVisible() {
+			return weightInput.isDisplayed();
+		}
+		public boolean isGenderDropdownVisible() {
+			return genderDropdown.isDisplayed();
+					
+		}
+		 public List<String> getDropdownGenderOptions() {
+				List<String> labels = new ArrayList<>();
+		        for (WebElement option : DropdownGenderOptions) {
+		        	labels.add(option.getText().trim());
+		        }
+		        return labels;
+		    }
+		 public boolean isUploadContinueButtonEnabled() {
+			 return uploadContinueButton.isEnabled();
+		 }
+		 
+		 public void clickheightInput() {
+			 heightInput.click(); 
+		 }
+		 public void clickweightInput() {
+			 weightInput.click(); 
+		 }
+		 public void enterHeightInput() throws InterruptedException {
+			 clickheightInput();
+			 heightInput.sendKeys(Keys.chord(Keys.CONTROL, "a"));  // Select existing text
+			 heightInput.sendKeys(Keys.BACK_SPACE); 
+			 heightInput.sendKeys("140");
+		 }
+		 public void enterWeight() throws InterruptedException {
+			 clickweightInput();
+			 weightInput.sendKeys(Keys.chord(Keys.CONTROL, "a"));  // Select existing text
+			 weightInput.sendKeys(Keys.BACK_SPACE); 
+			 weightInput.sendKeys("60");
+		 }
+		 public void clickuploadContinueButton() {
+			 uploadContinueButton.click();
+		 }
+		 public boolean isblooddreportStep2Visible() {
+			 return blooddreportStep2.isDisplayed();
+		 }
+		 public String getblooddreportStep2Text() {
+		    	return blooddreportStep2.getText();
+		    }
+		 public String getblooddreportStep2Subtext() {
+		    	return blooddreportStep2Subtext.getText();
+		    }
+
+		 public void enterInvalidHeightInput() {
+			 heightInput.clear();
+			 heightInput.sendKeys("0");
+		 }
+		 public void enterInvalidWeight() {
+			 weightInput.clear();
+			 weightInput.sendKeys("0");
+		 }
+		 public boolean isUploadInputErrorMessage() {
+			 String validationMsg = (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].validationMessage;", heightInput);
+			 System.out.println("number validation error message : " + validationMsg);
+			 boolean isValid = (boolean) ((JavascriptExecutor) driver).executeScript("return arguments[0].checkValidity();", heightInput);
+			 System.out.println("isValid NUmber : " + isValid);
+			 return isValid; // uploadInputErrorMessage.isDisplayed();
+		 }
+
+		 public boolean isUploadProgressBarVisible() {
+			 return step1Highlighted.isDisplayed();
+		 }
+		public String getprogresstext() {
+			System.out.println("progress bar text: "+progresstext.getText());
+			return progresstext.getText().trim();
+			
+		}
+		public String getHighlightedWidth() {
+			String HighlightedWidth = null;
+			String style = step1Highlighted.getAttribute("style");
+
+			for (String rule : style.split(";")) {
+			    if (rule.trim().startsWith("width")) {
+			    	HighlightedWidth = rule.split(":")[1].trim();
+			        break;
+			    }
+			}
+			System.out.println("Inline width: " + HighlightedWidth);  // Output: "50%"
+//			String HighlightedWidth = step1Highlighted.getCssValue("width");
+//			System.out.println("Border color on hover: " + HighlightedWidth);
+			return HighlightedWidth;
+		}
+		
+		public boolean isBloodreportBackButtonVisible() {
+			return bloodreportBackButton.isDisplayed();
+		}
+		public void clickBloodreportExcerciseLevel() {
+			bloodreportExcerciseLevel.click();
+		}
+		public boolean isblooddreportStep1Visible() {
+			 return bloodreportStep1.isDisplayed();
+		 }
+		 public boolean isblooddreportStep3Visible() {
+			 return bloodreportStep3.isDisplayed();
+		 }
+		 public String getblooddreportStep3Text() {
+		    	return bloodreportStep3.getText();
+		    }
+		 public String getblooddreportStep3Subtext() {
+		    	return bloodreportStep3Subtext.getText();
+		    }
+		 public List<String> getBloodReportTasteBudsOptions() {
+				List<String> labels = new ArrayList<>();
+		        for (WebElement option : bloodreportTateBudOptions) {
+		        	labels.add(option.getText().trim());
+		        }
+		        return labels;
+		    }
+		 public void clickBloodreportBackButton() {
+			 bloodreportBackButton.click();
+		 }
+		 
+		 public void clickSelectBloodReportTastebud() {
+			 selectBloodReportTastebud.click();
+		 }
+		 public boolean isblooddreportStep4Visible() {
+			 return bloodreportStep4.isDisplayed();
+		 }
+		 public String getblooddreportStep4Text() {
+		    	return bloodreportStep4.getText();
+		    }
+		 public String getblooddreportStep4Subtext() {
+		    	return bloodreportStep4Subtext.getText();
+		    }
+		 public List<String> getbloodReportFoodOptions() {
+				List<String> labels = new ArrayList<>();
+		        for (WebElement option : bloodReportFoodOptions) {
+		        	labels.add(option.getText().trim());
+		        }
+		        return labels;
+		    }
+		public void clickSelectBloodreportAllergyFood() {
+			selectBloodreportAllergyFood.click();
+		}
+		public void ClickSelectBloodReportFood() {
+			selectBloodReportFood.click();
+		}
+		public void clickSubmitButton() {
+			submitButton.click();
+		}
+		public boolean isAccountUpgradeVisible() {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	        return wait.until(ExpectedConditions.visibilityOf(accountUpgrade)).isDisplayed();
+		}
+		public void clickSelectDairyAllery() {
+			selectDairyAllery.click();
+		}
+		public void clickSelectNutsAllery() {
+			selectNutsAllery.click();
+		}
+		 
 	
 	
 

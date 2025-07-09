@@ -1,3 +1,4 @@
+@SingleBrowser
 Feature: Login page field and functional Validation,Complete Profile Form validation for new user
 
 Background: User clicked login button after reaching SweetBalance app homepage
